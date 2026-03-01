@@ -1,6 +1,6 @@
 This corpus has been largely obtained from https://huggingface.co/datasets/Siddish/change-my-view-subreddit-cleaned.
 
-The extracted and formatted corpus can be found that we will be using for this project can be found here: https://drive.google.com/drive/folders/14mo6V1ivSJNurmgYwCFVfw78_DKZlFdt?usp=drive_link
+The extracted and formatted corpus is called corpus_raw.csv and is in the data/raw folder of our repo: https://github.ubc.ca/gillylg/argument-summaries/blob/main/data/raw/corpus_raw.csv
 
 Alternatively, the entire code to extract and use this data has been provided in the loading_corpus.py file located in the src folder. 
 
