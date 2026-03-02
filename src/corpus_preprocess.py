@@ -3,12 +3,14 @@ import random
 import re
 from collections import defaultdict, deque
 from convokit import Corpus, download
+from pathlib import Path
 
 # -----------------------------
 # Configuration
 # -----------------------------
 CORPUS_PATH = r"C:\Users\leyao\.convokit\saved-corpora\winning-args-corpus" # Replace with your username, obviously
-OUTPUT_FILE = r"data\winning_args_threads.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+OUTPUT_FILE = BASE_DIR / "data" / "corpus_preprocessed.csv"
 MIN_LENGTH = 5          # minimum number of comments in a path
 RANDOM_SEED = 67        # reproducibility
 
