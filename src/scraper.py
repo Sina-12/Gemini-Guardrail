@@ -13,12 +13,9 @@ For each post, the script tries to extract:
 
 The final output is saved as a CSV file that can be used for later analysis.
 
-Default will result in roughly 200 comment threads, which does take some time to run.
-Can alter default value in batch_size in main() for quicker results.
-Ensure you have atleast 
-
 Usage:
-    python scraperV2.py changemyview --target-trees 100 --batch-size 300
+    python scraper.py changemyview
+    python scraper.py changemyview --target-trees 50
 
 Output:
     src/output/{subreddit}/corpus.csv
@@ -385,12 +382,12 @@ def extract_branches(driver, post_index):
     if delta_chains:
         best = delta_chains[0]
         if len(best) + 1 >= MIN_BRANCH_DEPTH:
-            s_rows = _chain_to_rows(best, op_text, op_username, f"{post_index}_s", 1)
+            s_rows = _chain_to_rows(best, op_text, op_username, f"s{post_index}_s", 1)
 
     if no_delta_chains:
         best = no_delta_chains[0]
         if len(best) + 1 >= MIN_BRANCH_DEPTH:
-            u_rows = _chain_to_rows(best, op_text, op_username, f"{post_index}_u", 0)
+            u_rows = _chain_to_rows(best, op_text, op_username, f"s{post_index}_u", 0)
 
     return s_rows, u_rows
 
