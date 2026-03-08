@@ -14,8 +14,7 @@ For each post, the script tries to extract:
 The final output is saved as a CSV file that can be used for later analysis.
 
 Usage:
-    python scraper.py changemyview
-    python scraper.py changemyview --target-trees 50
+    python scraper.py changemyview --target-trees 100 --batch-size 150
 
 Output:
     src/output/{subreddit}/corpus.csv
