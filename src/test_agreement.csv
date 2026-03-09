@@ -1,0 +1,9 @@
+doc_id,annotator,success,brevity,accuracy
+1,Sina,2,1,2
+1,Jai,1,1,2
+1,Gilly,2,2,1
+1,Rayan,2,1,2
+2,Sina,1,0,0
+2,Jai,1,0,1
+2,Gilly,1,1,0
+2,Rayan,1,0,0
