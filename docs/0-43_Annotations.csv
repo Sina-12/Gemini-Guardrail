@@ -1,4 +1,4 @@
-arg_id,summary
+arg_id,summary,sentiment,accuracy,brevity,reviewer_id
 0_s,"The conversation explores the feasibility of ""financial abortion,"" a legal framework allowing men to opt out of financial responsibility and parental rights during the early stages of a pregnancy.
 The Proposed Framework
 
@@ -13,7 +13,7 @@ The Counter-Argument and Concession
 
 The debate shifts when a respondent argues that society prioritizes the welfare of the child over the personal finances of the parents. Current legal systems view the ""proper raising"" of a child as a shared responsibility that cannot be discarded based on individual preference.
 
-The OP eventually concedes (awarding a ""Delta"") after realizing that their proposal effectively forces women into a binary choice—abort or shoulder the entire burden—which would either mandate abortions for low-income women or place an unsustainable strain on government welfare systems. They conclude the law is unfeasible in contemporary society."
+The OP eventually concedes (awarding a ""Delta"") after realizing that their proposal effectively forces women into a binary choice—abort or shoulder the entire burden—which would either mandate abortions for low-income women or place an unsustainable strain on government welfare systems. They conclude the law is unfeasible in contemporary society.",1,2,2,0
 0_u,"This debate centers on the concept of ""financial abortion,"" a proposed law allowing men to waive parental rights and child support obligations early in a pregnancy.
 The Proposal
 
@@ -38,7 +38,7 @@ The OP counters that:
 
     Taxpayers already support people who make poor life choices; a woman choosing to carry a child she cannot afford is simply another example.
 
-    Concerns about men ""exploiting"" the system are based on a ""dim view"" of male morality, similar to concerns about ""spermjacking"" by women."
+    Concerns about men ""exploiting"" the system are based on a ""dim view"" of male morality, similar to concerns about ""spermjacking"" by women.",1,2,1,0
 1_s,"This debate explores whether ""goodness"" is defined by moral intent, logical reasoning, or social conformity.
 The Initial Argument
 
@@ -55,7 +55,7 @@ The Critique
 The respondent (r1) challenges this by pointing out that the OP’s definition makes morality dependent on intellectual process rather than action. They argue that under this logic, a philanthropist who helps the poor simply because they ""feel it's right"" (without deep philosophical deliberation) would be considered morally indifferent. This makes the concept of morality nearly useless, as we could never judge someone's character without knowing their internal syllogisms.
 The Resolution
 
-The OP concedes (Delta awarded) that it is ""odd"" to claim someone isn't good just because their moral beliefs are inherited or instinctive rather than deeply reasoned. However, they maintain that deliberative moral agents—those who consciously analyze their ethics—possess a higher level of moral competence than those who simply follow social pressure."
+The OP concedes (Delta awarded) that it is ""odd"" to claim someone isn't good just because their moral beliefs are inherited or instinctive rather than deeply reasoned. However, they maintain that deliberative moral agents—those who consciously analyze their ethics—possess a higher level of moral competence than those who simply follow social pressure.",1,2,2,0
 1_u,"This debate centers on whether ""goodness"" requires conscious moral reasoning or simply good outcomes.
 
 The OP’s Argument
@@ -82,7 +82,7 @@ Summary of Moral Agency Continuum
 Group	Characteristics
 Moral Visionaries	Reason from first principles (e.g., Bentham, Mill).
 The Average	Follow socialized norms; lack independent moral ""fortitude.""
-Non-Agents	Incapable of moral discourse (infants, severely brain-damaged)."
+Non-Agents	Incapable of moral discourse (infants, severely brain-damaged).",0,1,1,0
 2_s,"The debate explores whether a direct online democracy—where citizens vote on individual policies rather than representatives—is superior to the current republic model.
 
 The OP’s Argument
@@ -104,7 +104,7 @@ The responder successfully challenged the OP by highlighting several risks:
     Corporate Influence: Instead of lobbying candidates, corporations would simply redirect their massive advertising budgets toward manipulating public opinion on specific bills.
 
 The Outcome
-The OP ultimately awarded a ""Delta"" (changed their view), conceding that the system's potential for volatility and the unpredictable nature of minority protection made it too risky to definitively call ""better"" than the current system."
+The OP ultimately awarded a ""Delta"" (changed their view), conceding that the system's potential for volatility and the unpredictable nature of minority protection made it too risky to definitively call ""better"" than the current system.",1,1,2,0
 2_u,"The debate examines whether modern technology makes direct online democracy (voting on issues) superior to representative republics (voting for candidates).
 
 The OP’s Argument
@@ -126,7 +126,7 @@ The responder argues that direct democracy creates significant risks:
     Paradox of Competence: The responder notes that the ""unqualified"" politicians OP criticizes were elected by the same people OP wants to give direct power to.
 
 Conclusion
-The OP ultimately conceded (awarding a Delta) that such a system might be too volatile and could lead to the unpredictable ""screwing over"" of minorities."
+The OP ultimately conceded (awarding a Delta) that such a system might be too volatile and could lead to the unpredictable ""screwing over"" of minorities.",0,0,1,0
 3_s,"The debate centers on whether Fine Arts credits should be a mandatory requirement for high school graduation.
 
 The OP’s Argument
@@ -146,7 +146,7 @@ The responder challenged these points by drawing parallels to other subjects:
     Comparative Value: They pointed out that the school system already acknowledges the higher market demand for STEM by requiring three times more math credits than art credits.
 
 The Outcome
-The OP conceded and awarded a Delta, realizing that the current credit ratio (3:1) effectively balances the ""nebulous"" nature of art with the practical necessity of math while acknowledging that art still holds a place in career development."
+The OP conceded and awarded a Delta, realizing that the current credit ratio (3:1) effectively balances the ""nebulous"" nature of art with the practical necessity of math while acknowledging that art still holds a place in career development.",1,2,1,0
 3_u,"The debate explores whether mandatory Fine Arts credits are a valid requirement for high school graduation.
 
 The OP’s Argument
@@ -174,7 +174,7 @@ The OP awarded a Delta, accepting that:
 
     The existence of ""bad"" artists doesn't justify removing the program for everyone.
 
-    Psychological evidence—such as studies showing art reduces cortisol (stress)—supports the value of creative outlets."
+    Psychological evidence—such as studies showing art reduces cortisol (stress)—supports the value of creative outlets.",0,1,2,0
 4_s,"This debate explores whether the United States should abolish the grand jury system, particularly in cases involving government agents.
 
 The OP’s Argument
@@ -188,7 +188,7 @@ The responder argues that the high indictment rate simply proves that prosecutor
     Misplaced Blame: The responder contends that if a prosecutor is biased or ""soft"" on police, that bias will persist throughout a trial anyway. The grand jury is not the source of this corruption.
 
 The Outcome
-The OP awarded a Delta, conceding that while the justice system has flaws regarding conflicts of interest, abolishing grand juries would not solve the problem of prosecutorial bias and might remove a necessary check on state power."
+The OP awarded a Delta, conceding that while the justice system has flaws regarding conflicts of interest, abolishing grand juries would not solve the problem of prosecutorial bias and might remove a necessary check on state power.",1,2,0,0
 4_u,"This debate explores whether the U.S. Grand Jury system should be abolished, specifically focusing on its role in cases of police misconduct.
 
 The OP’s Argument
@@ -204,7 +204,7 @@ The responder argues that the high indictment rate is a feature, not a bug. Key 
     Prosecutorial Intent: If a prosecutor wants to protect an officer, they will do so regardless of the system. Abolishing grand juries wouldn't fix a lack of ""prosecutorial will"" to win at trial.
 
 Conclusion
-The responder posits that high-profile failures (like Ferguson) are statistical outliers. If a prosecutor isn't motivated to win at the grand jury stage, they certainly won't win the much harder adversarial trial."
+The responder posits that high-profile failures (like Ferguson) are statistical outliers. If a prosecutor isn't motivated to win at the grand jury stage, they certainly won't win the much harder adversarial trial.",1,2,2,0
 5_s,"This debate explores whether identifying with specific social groups (nationality, ethnicity, etc.) inherently leads to prejudice against outsiders.
 
 The OP’s Argument
@@ -220,7 +220,7 @@ The responder challenges this by highlighting the value of particularity:
     Autonomy: Respecting how people choose to label themselves is a prerequisite for believing they will act morally toward others.
 
 The Outcome
-The OP awarded a Delta, acknowledging a broader perspective. They conceded that while group identification might feel ""aggressive,"" it is vital to respect personal autonomy. They moved from seeing sub-groups as purely negative to recognizing that maintaining unique identities is important to people and does not automatically preclude recognizing a shared ""human-ness."""
+The OP awarded a Delta, acknowledging a broader perspective. They conceded that while group identification might feel ""aggressive,"" it is vital to respect personal autonomy. They moved from seeing sub-groups as purely negative to recognizing that maintaining unique identities is important to people and does not automatically preclude recognizing a shared ""human-ness.""",1,2,2,0
 5_u,"This debate explores whether identifying with specific social groups, such as nationality or ethnicity, inevitably leads to prejudice or hatred toward others.
 
 The OP’s Argument
@@ -236,7 +236,7 @@ The responder challenges this by distinguishing between affection and hostility:
     Definition of Patriotism: They define patriotism simply as ""love of country,"" noting that love for one thing does not require or imply hatred for another.
 
 Conclusion
-The OP eventually realizes their view was influenced by their specific cultural background (Eastern Europe), acknowledging that while ""love of country"" felt unnatural to them, it is conceptually distinct from active prejudice."
+The OP eventually realizes their view was influenced by their specific cultural background (Eastern Europe), acknowledging that while ""love of country"" felt unnatural to them, it is conceptually distinct from active prejudice.",0,2,2,0
 6_s,"The debate explores whether governments should regulate medical tourism—the practice of traveling abroad for medical procedures.
 
 The OP’s Argument
@@ -256,7 +256,7 @@ The responder argues that while some medical tourism is beneficial (e.g., skippi
     Pseudo-Science and Scams: They cite the ""MS Liberation Treatment"" as an example of a dangerous, debunked procedure. Without regulation, desperate patients might spend thousands on ""phantom treatments"" that offer no benefit and cause physical harm.
 
 The Outcome
-The OP awarded a Delta, specifically influenced by the ""phantom treatment"" argument. They conceded that government bans serve as a crucial signal to citizens that certain foreign procedures are medically worthless, protecting vulnerable individuals and those under the care of others from exploitation."
+The OP awarded a Delta, specifically influenced by the ""phantom treatment"" argument. They conceded that government bans serve as a crucial signal to citizens that certain foreign procedures are medically worthless, protecting vulnerable individuals and those under the care of others from exploitation.",1,1,2,0
 6_u,"This debate examines whether governments should regulate medical tourism (traveling abroad for medical care).
 
 The OP’s Argument
@@ -272,7 +272,7 @@ The responder highlights several critical risks that require oversight:
     Brain Drain: In developing nations, the lure of ""tourist dollars"" might divert medical resources away from the local poor toward wealthy foreigners.
 
 Conclusion
-While the OP maintains that market competition drives down prices and increases innovation, the responder emphasizes that ""choice"" is an illusion if the only affordable options have dubious safety standards."
+While the OP maintains that market competition drives down prices and increases innovation, the responder emphasizes that ""choice"" is an illusion if the only affordable options have dubious safety standards.",1,1,1,0
 7_s,"This debate explores whether prisons should be legally or financially obligated to accommodate inmates' religious requirements, such as special diets (Kosher/Halal), headgear, or prayer times.
 
 The OP’s Argument
@@ -296,7 +296,7 @@ The OP awarded a Delta, refining their view. They concluded that religious oblig
 
     They act as a revocable privilege for good behavior.
 
-    The inmate pays the cost difference for special needs (e.g., expensive Kosher meals), preventing an ""establishment of religion"" by the state while allowing for its ""free exercise."""
+    The inmate pays the cost difference for special needs (e.g., expensive Kosher meals), preventing an ""establishment of religion"" by the state while allowing for its ""free exercise.""",1,2,1,0
 7_u,"The debate explores whether prison systems should be legally required to accommodate the religious obligations of inmates, such as specific diets, headgear, or prayer schedules.
 
 The OP’s Argument
@@ -316,7 +316,7 @@ The responder shifts the focus toward rehabilitation and recidivism:
     Hardening the Criminal: Depriving inmates of basic spiritual identity may foster resentment toward society, making them more dangerous upon release.
 
 The Outcome
-The OP eventually awarded a Delta, refining their stance. They concluded that religious accommodations should be allowed only if the inmate pays the cost difference (to avoid taxpayer burden) and maintains good behavior. This balances the ""free exercise"" of religion with the principle that taxpayers should not fund specific religious choices."
+The OP eventually awarded a Delta, refining their stance. They concluded that religious accommodations should be allowed only if the inmate pays the cost difference (to avoid taxpayer burden) and maintains good behavior. This balances the ""free exercise"" of religion with the principle that taxpayers should not fund specific religious choices.",0,0,2,0
 8_s,"This debate centers on the legitimacy of Social Contract Theory (SCT)—the idea that individuals have moral or political obligations to a state as part of a collective agreement.
 
 The OP’s Argument
@@ -338,7 +338,7 @@ The responder challenges the OP’s definition of consent and the existence of "
     Property Rights: If the OP rejects social fictions like SCT, they must also prove that ""property ownership"" exists outside of social agreement.
 
 The Outcome
-The OP awarded a Delta, conceding the point on parental consent. They agreed that if parents can legitimately make life-altering medical decisions for a child, they can also legitimately accept citizenship on the child's behalf. However, the OP remained skeptical about the state's right to maintain authority over them once they reach the age of majority."
+The OP awarded a Delta, conceding the point on parental consent. They agreed that if parents can legitimately make life-altering medical decisions for a child, they can also legitimately accept citizenship on the child's behalf. However, the OP remained skeptical about the state's right to maintain authority over them once they reach the age of majority.",1,2,2,0
 8_u,"The OP’s Argument
 The OP argues that SCT is a false construct used by governments to manufacture consent. Rooting their view in the Non-Aggression Principle, the OP believes:
 
@@ -358,7 +358,7 @@ The responder argues for a practical, descriptive view of rights:
     Cultural Variation: Rights change based on the contract (e.g., free speech in the US vs. Germany), proving they are social constructs rather than universal laws.
 
 Conclusion
-The debate ends in a philosophical deadlock: the OP maintains that rights are inherent and objective, while the responder insists they are strictly utility-based agreements enforced by the state."
+The debate ends in a philosophical deadlock: the OP maintains that rights are inherent and objective, while the responder insists they are strictly utility-based agreements enforced by the state.",1,2,2,0
 9_s,"The debate explores the ethical responsibility of a ""third party"" in a potential hookup when one person is in a committed relationship.
 
 The OP’s Argument
@@ -374,7 +374,7 @@ The responder utilizes the Ultimatum Game (a behavioral economics study) to show
     Morality vs. Legality: The responder argues that ""legal"" does not mean ""moral,"" and individuals must maintain social standards that the law cannot feasibly regulate.
 
 The Outcome
-The OP awarded a Delta, conceding that while the primary fault lies with the cheater, the individual has a secondary responsibility to avoid actions that negatively impact the broader social order."
+The OP awarded a Delta, conceding that while the primary fault lies with the cheater, the individual has a secondary responsibility to avoid actions that negatively impact the broader social order.",1,1,2,0
 9_u,"This debate explores whether a single person bears moral responsibility when knowingly hooking up with someone in a committed relationship.
 
 The OP’s Argument
@@ -390,7 +390,7 @@ The responder distinguishes between passive allowance and active facilitation. T
     Societal Strife: Decent human beings have a general obligation to avoid creating needless conflict and suffering in the lives of others, even strangers.
 
 Conclusion
-The OP maintains that they should act in their own self-interest, viewing the choice to cheat as the sole prerogative of the committed partner. The responder argues this is a ""net negative"" worldview that ignores the human impact of one's actions."
+The OP maintains that they should act in their own self-interest, viewing the choice to cheat as the sole prerogative of the committed partner. The responder argues this is a ""net negative"" worldview that ignores the human impact of one's actions.",1,2,1,0
 10_s,"This debate analyzes whether the acronym ISIL (Islamic State of Iraq and the Levant) is superior to ISIS (Islamic State of Iraq and Syria) for describing the militant group.
 
 The OP’s Argument
@@ -410,7 +410,7 @@ The responder argues from a perspective of linguistic pragmatism:
     The ""Watering Down"" Effect: Constant name changes can diminish the perceived threat by fragmenting the group's identity in the eyes of the public.
 
 The Outcome
-The OP awarded a Delta, conceding that while ISIL is technically more accurate, ""ISIS"" is equally useful as a widely recognized name. They acknowledged that for the general public, the term functions as a label for a specific ""brand"" of terror rather than a precise geographic survey."
+The OP awarded a Delta, conceding that while ISIL is technically more accurate, ""ISIS"" is equally useful as a widely recognized name. They acknowledged that for the general public, the term functions as a label for a specific ""brand"" of terror rather than a precise geographic survey.",1,2,2,0
 10_u,"This debate centers on the linguistic accuracy and political utility of the names ISIL (Islamic State of Iraq and the Levant) versus ISIS (Islamic State of Iraq and Syria).
 The OP’s Argument
 
@@ -432,7 +432,7 @@ The responder challenges the premise that al-Sham is even relevant, arguing:
 
 The Outcome
 
-The OP awarded a Delta, conceding that ""ISIS"" has become a ""proper name"" rather than a literal acronym. They acknowledged that ""ISIS"" can still refer to al-Sham in an academic sense, even if the general public and media use it as a simplified label."
+The OP awarded a Delta, conceding that ""ISIS"" has become a ""proper name"" rather than a literal acronym. They acknowledged that ""ISIS"" can still refer to al-Sham in an academic sense, even if the general public and media use it as a simplified label.",0,2,0,0
 11_s,"This debate explores whether the U.S. Constitution's requirement that a president be at least 35 years old is an undemocratic relic or a necessary safeguard.
 The OP’s Argument
 
@@ -456,7 +456,7 @@ The responder frames the age limit as a risk management tool. Their points inclu
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that the age limit serves as a practical mechanism for risk reduction in a system that cannot always guarantee a perfect vetting of every candidate's individual merits."
+The OP awarded a Delta, acknowledging that the age limit serves as a practical mechanism for risk reduction in a system that cannot always guarantee a perfect vetting of every candidate's individual merits.",1,2,2,0
 11_u,"This debate centers on the Constitutional age requirement for the U.S. Presidency and whether it remains a valid democratic safeguard.
 
 The OP’s Argument
@@ -472,7 +472,7 @@ The responder focuses on cognitive development and perspective. They argue that:
     Practicality: The responder asserts that no mature voter would actually trust a 23-year-old with the nuclear codes, framing the limit as a common-sense filter.
 
 Conclusion
-The debate ends in a stalemate regarding eligibility versus electability. The OP maintains that ""allowed to run"" is a matter of principle, while the responder insists that age is a non-negotiable prerequisite for the gravity of the office."
+The debate ends in a stalemate regarding eligibility versus electability. The OP maintains that ""allowed to run"" is a matter of principle, while the responder insists that age is a non-negotiable prerequisite for the gravity of the office.",1,1,2,0
 12_s,"This debate centers on the morality of killing animals for food versus the morality of the conditions in which they are raised.
 
 The OP’s Argument
@@ -482,7 +482,7 @@ The Rebuttal
 The responder attacks the OP's logic regarding the ""will to live."" They argue that avoiding death is, in fact, the practical equivalent of a desire to live. They point out that even humans often prioritize quality of life over ""living as long as possible,"" yet we still recognize a human's right to life. By the OP's own logic—if a lack of a long-term preference justifies killing—then killing humans who don't explicitly desire longevity would be equally fine.
 
 The Outcome
-The OP awarded a Delta, admitting their specific phrasing—that a lack of a preference for longevity justifies killing—was logically flawed. While the OP maintained their stance against factory farming, they conceded that their core justification for the ""morality of killing"" was incorrect."
+The OP awarded a Delta, admitting their specific phrasing—that a lack of a preference for longevity justifies killing—was logically flawed. While the OP maintained their stance against factory farming, they conceded that their core justification for the ""morality of killing"" was incorrect.",1,1,1,0
 12_u,"This debate explores the ethics of meat-eating, distinguishing between the act of killing and the conditions of animal husbandry.
 The OP’s Argument
 
@@ -499,7 +499,7 @@ The responder challenges the OP’s ""preference"" criteria using several angles
 
 The Outcome
 
-The OP maintains their ""cautionary"" stance: while they believe it is ""likelier than not"" that slaughter violates no preference, they conclude that meat consumption remains indefensible so long as it fuels the industrial suffering of battery farming."
+The OP maintains their ""cautionary"" stance: while they believe it is ""likelier than not"" that slaughter violates no preference, they conclude that meat consumption remains indefensible so long as it fuels the industrial suffering of battery farming.",1,1,1,0
 13_s,"This debate explores whether direct democracy could be viable if voting rights were restricted to those who are ""informed"" on the facts of an issue.
 
 The OP’s Argument
@@ -513,7 +513,7 @@ The responder, a national security researcher, challenges the feasibility of def
     Voter Scarcity: If the bar for being ""informed"" is set at a level of genuine expertise rather than just reading blogs, the voting pool would shrink from millions to just a few thousand specialists.
 
 The Outcome
-The OP awarded a Delta, conceding that the sheer volume of information required to make a truly expert decision is higher than they initially realized. They acknowledged that a ""fact-based"" restriction might inadvertently exclude almost everyone from the democratic process."
+The OP awarded a Delta, conceding that the sheer volume of information required to make a truly expert decision is higher than they initially realized. They acknowledged that a ""fact-based"" restriction might inadvertently exclude almost everyone from the democratic process.",1,2,2,0
 13_u,"This debate centers on the feasibility of direct democracy in the digital age, focusing on voter competency and technical security.
 
 The OP’s Argument
@@ -529,7 +529,7 @@ The responder focuses on the massive security and integrity risks of online voti
     Coercion: Physical polling places prevent vote-buying and intimidation; digital systems allow third parties to monitor a voter's ""anonymous"" screen.
 
 Conclusion
-While the OP insists these are ""details to be worked out,"" the responder maintains that the technical and social hurdles of ensuring a ""one person, one vote"" system without coercion make digital direct democracy a functional impossibility for the foreseeable future."
+While the OP insists these are ""details to be worked out,"" the responder maintains that the technical and social hurdles of ensuring a ""one person, one vote"" system without coercion make digital direct democracy a functional impossibility for the foreseeable future.",1,2,2,0
 14_s,"This debate explores a unique ethical critique of abortion, focusing not on the act itself, but on the intellectual ""duty of care"" exercised by the person making the decision.
 The OP’s Argument
 
@@ -549,7 +549,7 @@ The responder challenges the OP on several fronts:
 
 The Outcome
 
-The OP awarded a Delta, admitting that the infinite regress problem was more significant than they initially thought. They conceded that their argument relied on the ""reasonable probability"" that a fetus is a distinct life, and that defining the exact threshold for ""sufficient intellectual due diligence"" is a massive philosophical hurdle."
+The OP awarded a Delta, admitting that the infinite regress problem was more significant than they initially thought. They conceded that their argument relied on the ""reasonable probability"" that a fetus is a distinct life, and that defining the exact threshold for ""sufficient intellectual due diligence"" is a massive philosophical hurdle.",1,2,2,0
 14_u,"This debate centers on the epistemic responsibility of individuals seeking abortions, specifically whether a person must fully understand the philosophical morality of the act for it to be considered a moral decision.
 The OP’s Argument
 
@@ -573,7 +573,7 @@ The responder challenges the OP’s perceived elitism and inconsistency:
 
 Conclusion
 
-The debate concludes with the OP refusing to concede. While they acknowledge the difficulty of proving one's own intellectual superiority, they maintain that a ""reasoned position"" is a prerequisite for a truly moral life-and-death decision."
+The debate concludes with the OP refusing to concede. While they acknowledge the difficulty of proving one's own intellectual superiority, they maintain that a ""reasoned position"" is a prerequisite for a truly moral life-and-death decision.",1,2,2,0
 15_s,"This debate explores a proposed tax-weighted voting system, where an individual's voting power is proportional to the federal taxes they pay.
 
 The OP’s Argument
@@ -593,7 +593,7 @@ The responder argues that this system would inevitably create an oligarchy:
     Inherited Wealth: The responder uses the example of wealthy heirs to argue that money does not equate to societal contribution or competence.
 
 The Outcome
-The OP awarded a Delta after realizing that wealthy voters could consolidate power by lowering taxes for others to zero, stripping the majority of their vote. However, the OP remained skeptical that running a large business is ""easy,"" maintaining that financial success requires skill."
+The OP awarded a Delta after realizing that wealthy voters could consolidate power by lowering taxes for others to zero, stripping the majority of their vote. However, the OP remained skeptical that running a large business is ""easy,"" maintaining that financial success requires skill.",1,1,2,0
 15_u,"This debate explores a proposed plutocratic voting model where political power is determined by federal tax contributions, moving away from ""one person, one vote.""
 
 The OP’s Argument
@@ -613,7 +613,7 @@ The responder highlights how self-interest and financial engineering would corru
     Narrow Metrics: Income is a poor proxy for societal value. A domestic truck driver contributes more to national infrastructure than a high-earning banker working for a foreign interest, yet the banker would hold more power.
 
 Conclusion
-The debate stalls on technicalities, with the OP questioning the existence of specific tax loopholes, while the responder maintains that any system linking power to wealth inevitably devalues non-monetary societal contributions."
+The debate stalls on technicalities, with the OP questioning the existence of specific tax loopholes, while the responder maintains that any system linking power to wealth inevitably devalues non-monetary societal contributions.",1,1,2,0
 16_s,"The OP proposes a tax-weighted voting system, arguing that ""one person, one vote"" is flawed because average citizens lack the expertise to judge complex policy. They contend that tying voting power to federal taxes paid creates a self-correcting meritocracy where those who contribute most to the state have the greatest say in its management.
 The Rebuttal
 
@@ -627,7 +627,7 @@ The responder argues that this system is inherently easy to ""game"" and would r
 
 The Outcome
 
-The OP awarded a Delta, conceding that a high concentration of voting power makes the political system far more vulnerable to bribery and regulatory capture."
+The OP awarded a Delta, conceding that a high concentration of voting power makes the political system far more vulnerable to bribery and regulatory capture.",1,2,1,0
 16_u,"This debate explores a proposed tax-weighted voting system (""one dollar, one vote"") where political influence is proportional to federal tax contributions.
 The OP’s Argument
 
@@ -651,7 +651,7 @@ The responder argues the system is a recipe for an exploitative oligarchy:
 
 Conclusion
 
-The OP remains firm, believing that ""business-minded"" voters would eliminate government waste that ""sweet-talking"" politicians currently protect. The responder maintains that empowering those who benefit from corruption only ensures that corruption becomes the law."
+The OP remains firm, believing that ""business-minded"" voters would eliminate government waste that ""sweet-talking"" politicians currently protect. The responder maintains that empowering those who benefit from corruption only ensures that corruption becomes the law.",1,1,2,0
 17_s,"This debate addresses the classic philosophical conflict between divine omniscience and human free will.
 The OP’s Argument
 
@@ -668,7 +668,7 @@ The responder shifts the perspective from ""predestination"" to ""timelessness."
 
 The Outcome
 
-The OP awarded a Delta, accepting the analogy that God’s knowledge is akin to human memory—a record of a free choice rather than a script that dictates it."
+The OP awarded a Delta, accepting the analogy that God’s knowledge is akin to human memory—a record of a free choice rather than a script that dictates it.",1,2,2,0
 17_u,"This debate explores the tension between divine omniscience and human free will through the lens of determinism.
 The OP’s Argument
 
@@ -685,7 +685,7 @@ The responder shifts the focus from theology to scientific determinism:
 
 Conclusion
 
-The OP acknowledges familiarity with ""hard"" and ""soft"" determinism, admitting they were playing ""devil's advocate."" The exchange concludes with the responder suggesting that the existence of an omniscient God is irrelevant to the question of free will if the universe is fundamentally deterministic."
+The OP acknowledges familiarity with ""hard"" and ""soft"" determinism, admitting they were playing ""devil's advocate."" The exchange concludes with the responder suggesting that the existence of an omniscient God is irrelevant to the question of free will if the universe is fundamentally deterministic.",1,2,2,0
 18_s,"This debate addresses whether welfare recipients should be mandated to undergo drug testing and use birth control.
 
 The OP’s Argument
@@ -701,7 +701,7 @@ The responder shifts the focus from economics to human rights and empathy:
     Human Fulfillment: They argue that life cannot be measured solely by ""dollar signs""; for many, having a child is a source of fulfillment that shouldn't be reserved only for the wealthy.
 
 The Outcome
-The OP awarded a Delta, specifically moved by the argument regarding human fulfillment. They conceded that denying someone the right to have a child—a primary source of happiness—is overly harsh. However, the OP maintained that occasional drug testing remains reasonable to ensure funds are used for basic needs."
+The OP awarded a Delta, specifically moved by the argument regarding human fulfillment. They conceded that denying someone the right to have a child—a primary source of happiness—is overly harsh. However, the OP maintained that occasional drug testing remains reasonable to ensure funds are used for basic needs.",1,2,1,0
 18_u,"This debate explores the ethics of conditioning welfare benefits on mandatory drug testing and birth control.
 
 The OP’s Argument
@@ -717,7 +717,7 @@ The responder challenges the OP on both factual and ethical grounds:
     Gender Disparity: They highlight that ""forced birth control"" would disproportionately target women’s bodies, as enforcing male contraception is practically difficult and often overlooked in these debates.
 
 The Outcome
-The OP conceded that stripping bodily autonomy based on income is problematic and acknowledged the gendered double standard. They shifted their focus to targeting only those who ""make no attempt to do better,"" while maintaining that drug testing might still be a reasonable way to ensure funds are spent on necessities."
+The OP conceded that stripping bodily autonomy based on income is problematic and acknowledged the gendered double standard. They shifted their focus to targeting only those who ""make no attempt to do better,"" while maintaining that drug testing might still be a reasonable way to ensure funds are spent on necessities.",1,1,2,0
 19_s,"This debate explores whether public grief following a celebrity's death is a genuine emotional response or a ""bandwagon"" performance for attention.
 The OP’s Argument
 
@@ -734,7 +734,7 @@ The responder provides a deeply personal defense using the career of Robin Willi
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that while they personally lack this emotional range, the responder successfully framed the celebrity as an ""institution"" or ""vehicle"" for life lessons, making the sense of loss more understandable."
+The OP awarded a Delta, acknowledging that while they personally lack this emotional range, the responder successfully framed the celebrity as an ""institution"" or ""vehicle"" for life lessons, making the sense of loss more understandable.",1,2,1,0
 19_u,"This debate explores whether the emotional outpouring following a celebrity's death is genuine or a performative ""bandwagon"" behavior.
 The OP’s Argument
 
@@ -751,7 +751,7 @@ The responder challenges the OP's stance as intellectually smug and dismissive o
 
 The Outcome
 
-The debate turns contentious. The responder accuses the OP of using the sub to signal intellectual superiority rather than seeking genuine understanding. The OP ultimately retreats, admitting a potential lack of empathy or understanding of others' emotional landscapes, but they do not officially concede the point, ending the exchange in a stalemate."
+The debate turns contentious. The responder accuses the OP of using the sub to signal intellectual superiority rather than seeking genuine understanding. The OP ultimately retreats, admitting a potential lack of empathy or understanding of others' emotional landscapes, but they do not officially concede the point, ending the exchange in a stalemate.",1,2,2,0
 20_s,"This debate explores the logical and economic feasibility of consuming cats and dogs in America to address food waste and hunger.
 The OP’s Argument
 
@@ -770,7 +770,7 @@ The responder challenges the OP with a series of logistical and economic realiti
 
 The Outcome
 
-The OP awarded two Deltas. First, they conceded that the scale of the ""pet meat"" industry was too small to be meaningful. Second, they accepted that the potential for job creation was negligible after the responder demonstrated that a 0.1% market increase would only yield roughly 500 jobs nationwide."
+The OP awarded two Deltas. First, they conceded that the scale of the ""pet meat"" industry was too small to be meaningful. Second, they accepted that the potential for job creation was negligible after the responder demonstrated that a 0.1% market increase would only yield roughly 500 jobs nationwide.",1,2,1,0
 20_u,"This debate examines the ethics and logic of consuming euthanized shelter pets to combat hunger in America.
 The OP’s Argument
 
@@ -787,7 +787,7 @@ The responder counters that the issue in America is not a lack of food, but a fa
 
 Conclusion
 
-While the OP maintains that individuals could process whole animals themselves to save costs, the responder effectively argues that the logistical hurdles and the existence of more efficient food-waste solutions render the consumption of pets an unnecessary and impractical policy."
+While the OP maintains that individuals could process whole animals themselves to save costs, the responder effectively argues that the logistical hurdles and the existence of more efficient food-waste solutions render the consumption of pets an unnecessary and impractical policy.",1,1,0,0
 21_s,"This debate explores whether a gender gap in sexual desire exists or if behavioral differences are driven by external risks.
 The OP’s Argument
 
@@ -806,7 +806,7 @@ The responder argues that the ""stranger sex"" metric is a measure of risk asses
 
 The Outcome
 
-The OP awarded a Delta, conceding that if the risks are fundamentally unequal, one cannot use outward behavior to accurately measure the underlying intensity of desire."
+The OP awarded a Delta, conceding that if the risks are fundamentally unequal, one cannot use outward behavior to accurately measure the underlying intensity of desire.",1,2,2,0
 21_u,"This debate explores whether sexual desire is inherently stronger in men or simply expressed differently due to biological and physiological mechanisms.
 The OP’s Argument
 
@@ -823,7 +823,7 @@ The responder, a trans woman, provides a unique perspective comparing her experi
 
 Conclusion
 
-The OP remains skeptical, interpreting the ""slower"" onset of female arousal as evidence of lower desire. However, the responder maintains that once the physiological differences are accounted for, the ""horniness"" experienced across the gender spectrum is fundamentally balanced."
+The OP remains skeptical, interpreting the ""slower"" onset of female arousal as evidence of lower desire. However, the responder maintains that once the physiological differences are accounted for, the ""horniness"" experienced across the gender spectrum is fundamentally balanced.",1,2,2,0
 22_s,"This debate explores the perceived hypocrisy of Western governments pressuring African nations to repeal anti-gay laws while the West simultaneously criminalizes or refuses to recognize polygamy.
 The OP’s Argument
 
@@ -838,7 +838,7 @@ The responder distinguishes between facilitation and persecution:
 
 The Outcome
 
-The OP awarded a Delta, acknowledging the moral distinction between a state refusing to grant a specific legal status (polygamy) and a state actively imprisoning citizens for their sexual orientation."
+The OP awarded a Delta, acknowledging the moral distinction between a state refusing to grant a specific legal status (polygamy) and a state actively imprisoning citizens for their sexual orientation.",1,2,1,0
 22_u,"The OP, a gay Nigerian student, explores the perceived hypocrisy of Western governments pressuring African nations to repeal anti-gay laws while the West continues to criminalize polygamy—a common African cultural practice.
 The OP’s Argument
 
@@ -860,7 +860,7 @@ The responder focuses on the Tu Quoque (appeal to hypocrisy) fallacy:
 
 Conclusion
 
-The OP remains unconvinced by the logical focus, arguing that international diplomacy relies on perceived legitimacy. They contend that a government with its own ""moral baggage"" cannot effectively advocate for rights elsewhere, as the target nation will simply dismiss them as hypocrites."
+The OP remains unconvinced by the logical focus, arguing that international diplomacy relies on perceived legitimacy. They contend that a government with its own ""moral baggage"" cannot effectively advocate for rights elsewhere, as the target nation will simply dismiss them as hypocrites.",1,2,1,0
 23_s,"This debate explores whether access to birth control should be classified as a ""basic human right"" or a ""contractual right"" within the healthcare system.
 The OP’s Argument
 
@@ -875,7 +875,7 @@ The responder shifts the framing from natural rights to contractual and consumer
 
 The Outcome
 
-The OP awarded a Delta, realizing they had conflated ""basic human rights"" with ""contractual rights."" They conceded that while birth control may not be a fundamental right like life or liberty, it functions as a valid contractual requirement for insurance providers to ensure comprehensive healthcare."
+The OP awarded a Delta, realizing they had conflated ""basic human rights"" with ""contractual rights."" They conceded that while birth control may not be a fundamental right like life or liberty, it functions as a valid contractual requirement for insurance providers to ensure comprehensive healthcare.",1,2,1,0
 23_u,"This debate explores whether the ""need"" for birth control qualifies as a basic human right, or if the argument itself is a misunderstanding of public policy.
 The OP’s Argument
 
@@ -892,7 +892,7 @@ The responder challenges the OP’s narrow definition of rights:
 
 Conclusion
 
-The OP ultimately conceded (in an edit) that they misinterpreted the common argument. They shifted to viewing birth control access as a contractual right—an insurance regulation intended to cover meaningful health expenses—rather than a philosophical ""natural right"" to sexual activity."
+The OP ultimately conceded (in an edit) that they misinterpreted the common argument. They shifted to viewing birth control access as a contractual right—an insurance regulation intended to cover meaningful health expenses—rather than a philosophical ""natural right"" to sexual activity.",1,2,2,0
 24_s,"This debate examines whether the absence of a video game demo provides a moral justification for temporary piracy.
 The OP’s Argument
 
@@ -909,7 +909,7 @@ The responder challenges the logic of ""demo-based"" justification:
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that their grievance wasn't specifically about ""demos"" but about the total lack of trial opportunities in the digital era. They concluded that if alternative ways to experience the game existed (like borrowing from a friend), the urge to pirate would disappear."
+The OP awarded a Delta, acknowledging that their grievance wasn't specifically about ""demos"" but about the total lack of trial opportunities in the digital era. They concluded that if alternative ways to experience the game existed (like borrowing from a friend), the urge to pirate would disappear.",1,1,2,0
 24_u,"This debate examines the ethics of pirating games as a ""self-made demo.""
 The OP’s Argument
 
@@ -926,7 +926,7 @@ The responder questions the OP's objectivity and the potential for ""moral corru
 
 Conclusion
 
-While the OP maintains their behavior is a harmless ""test drive,"" the responder highlights that ""trying"" a game for 6 hours often constitutes consuming the product itself, undermining the moral high ground the OP seeks to claim."
+While the OP maintains their behavior is a harmless ""test drive,"" the responder highlights that ""trying"" a game for 6 hours often constitutes consuming the product itself, undermining the moral high ground the OP seeks to claim.",1,1,2,0
 25_s,"This debate centers on whether ""death with dignity"" (assisted suicide) is a valid moral concept or a misleading political slogan.
 The OP’s Argument
 
@@ -950,7 +950,7 @@ The responder redefines dignity as being ""worthy of respect"" and argues that t
 
 The Outcome
 
-The OP awarded a Delta, specifically moved by the argument regarding the memories left behind. They conceded that choosing to die can be a dignified act if it prevents loved ones from being haunted by the ""horrifying memories"" of a protracted, undignified physical decline."
+The OP awarded a Delta, specifically moved by the argument regarding the memories left behind. They conceded that choosing to die can be a dignified act if it prevents loved ones from being haunted by the ""horrifying memories"" of a protracted, undignified physical decline.",1,2,1,0
 25_u,"This debate centers on whether the term ""death with dignity"" is a valid concept or a misleading political euphemism for assisted suicide.
 The OP’s Argument
 
@@ -967,7 +967,7 @@ The responder shifts the focus from abstract philosophy to the harsh realities o
 
 The Outcome
 
-The discussion reached a stalemate. The OP refused to share personal experiences, fearing a ""bias"" trap, and maintained that neither living in pain nor dying is dignified. The responder, feeling the OP was avoiding the practical reality of the situation, terminated the conversation."
+The discussion reached a stalemate. The OP refused to share personal experiences, fearing a ""bias"" trap, and maintained that neither living in pain nor dying is dignified. The responder, feeling the OP was avoiding the practical reality of the situation, terminated the conversation.",1,2,2,0
 26_s,"This debate centers on the internal pressure to ""over-tip"" to combat negative racial stereotypes regarding tipping habits.
 The OP’s Argument
 
@@ -984,7 +984,7 @@ The responder challenges the concept of shared racial responsibility:
 
 The Outcome
 
-The OP awarded a Delta, realizing that she cannot control or be held accountable for the behavior of an entire demographic. She concluded that she would continue to tip well for great service but would do so without the guilt of trying to ""fix"" the actions of others."
+The OP awarded a Delta, realizing that she cannot control or be held accountable for the behavior of an entire demographic. She concluded that she would continue to tip well for great service but would do so without the guilt of trying to ""fix"" the actions of others.",1,2,1,0
 26_u,"The OP, a Black woman, explains that she feels a social obligation to tip 40% to counteract the negative stereotype that Black people do not tip. She was raised to view tipping as a sign of respect for servers and now feels a personal responsibility to ""make up"" for the actions of others in her racial group to prove she is ""not like them.""
 The Argument for Individual Identity
 
@@ -999,7 +999,7 @@ The Reality of Stereotyping
 The OP counters that her experience often contradicts this logic. She notes that even when her family is polite, they frequently receive poor service from the start because servers have already applied the ""non-tipper"" stereotype to them. This creates a cycle where she feels forced to over-tip just to be seen as an individual.
 Conclusion
 
-While the responder argues that skin color shouldn't dictate responsibility, the OP highlights the weight of stereotype threat—the pressure to overcompensate for a group's perceived flaws to ensure fair treatment. Ultimately, the OP reached a point where she decided to continue rewarding good service but without the emotional burden of ""non-tipper guilt."""
+While the responder argues that skin color shouldn't dictate responsibility, the OP highlights the weight of stereotype threat—the pressure to overcompensate for a group's perceived flaws to ensure fair treatment. Ultimately, the OP reached a point where she decided to continue rewarding good service but without the emotional burden of ""non-tipper guilt.""",0,0,2,0
 27_s,"This debate examines whether Edward Snowden’s 2013 leaks caused tangible harm to U.S. national security or if the government's claims were merely ""fear-mongering.""
 The OP’s Argument
 
@@ -1014,7 +1014,7 @@ The responder highlights two specific ways the leaks compromised security:
 
 The Outcome
 
-The OP awarded a Delta. They were particularly moved by the hardware revelation, realizing that exposing the ""rigged computer"" program destroyed the effectiveness of a major intelligence tool and deterred foreign targets from purchasing equipment that the U.S. could easily monitor."
+The OP awarded a Delta. They were particularly moved by the hardware revelation, realizing that exposing the ""rigged computer"" program destroyed the effectiveness of a major intelligence tool and deterred foreign targets from purchasing equipment that the U.S. could easily monitor.",1,2,2,0
 27_u,"This debate examines whether the Edward Snowden leaks caused tangible harm to U.S. national security by revealing the global reach of NSA surveillance.
 The OP’s Argument
 
@@ -1031,7 +1031,7 @@ The responder argues that intelligence gathering relies on being unseen and unde
 
 The Outcome
 
-The discussion ends in a stalemate. The OP remains skeptical, distinguishing between the bulk data collection used in war zones (like Afghanistan) and targeted political spying (like the Brazilian President). They maintain that the leaks didn't reveal enough new bulk collection programs in neutral territories to significantly change a terrorist's existing risk assessment."
+The discussion ends in a stalemate. The OP remains skeptical, distinguishing between the bulk data collection used in war zones (like Afghanistan) and targeted political spying (like the Brazilian President). They maintain that the leaks didn't reveal enough new bulk collection programs in neutral territories to significantly change a terrorist's existing risk assessment.",1,1,2,0
 28_s,"The OP argues that police drones are a cost-effective, transparent alternative to helicopters and could significantly deter crime. They initially posit that innocent people should have nothing to fear from increased oversight, viewing privacy as a secondary concern to public safety.
 The Civil Liberties Rebuttal
 
@@ -1045,7 +1045,7 @@ The responder challenges this ""security-first"" mindset by focusing on the Four
 
 The Outcome
 
-The OP awarded two Deltas. They conceded that while surveillance is efficient, the risk of a ""slippery slope"" toward an oppressive state is too high. They amended their view to state that drone use must strictly adhere to due process and require warrants to be used in legal proceedings."
+The OP awarded two Deltas. They conceded that while surveillance is efficient, the risk of a ""slippery slope"" toward an oppressive state is too high. They amended their view to state that drone use must strictly adhere to due process and require warrants to be used in legal proceedings.",1,2,2,0
 28_u,"This debate explores the ethical balance between public safety and the individual right to privacy in the context of police drone surveillance.
 The OP’s Argument
 
@@ -1062,7 +1062,7 @@ The responder frames the issue as a ""slippery slope"" regarding state power:
 
 The Outcome
 
-The discussion highlights a fundamental ideological divide. The OP views privacy as a low-value commodity that should be traded for safety, while the responder views it as a vital check on government authority. Ultimately, the OP acknowledged that for such a program to be ""reasonable,"" it would require complex, transparent laws and warrant requirements—making it a risky endeavor in the real world."
+The discussion highlights a fundamental ideological divide. The OP views privacy as a low-value commodity that should be traded for safety, while the responder views it as a vital check on government authority. Ultimately, the OP acknowledged that for such a program to be ""reasonable,"" it would require complex, transparent laws and warrant requirements—making it a risky endeavor in the real world.",0,2,2,0
 29_s,"This debate explores the ethical balance between public safety and the right to privacy regarding police drone surveillance.
 The OP’s Argument
 
@@ -1077,7 +1077,7 @@ The responder challenges the ""security-at-any-cost"" mindset with two key point
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that while the collection of data might not bother them, the use of that data must be strictly regulated. They amended their view to state that drone surveillance is only reasonable if it adheres to strict warrant requirements and due process to prevent systemic government overreach."
+The OP awarded a Delta, acknowledging that while the collection of data might not bother them, the use of that data must be strictly regulated. They amended their view to state that drone surveillance is only reasonable if it adheres to strict warrant requirements and due process to prevent systemic government overreach.",1,1,1,0
 29_u,"The OP argues that police drone surveillance is a reasonable, cost-effective tool for public safety, dismissing privacy concerns as ""overblown."" They contend that ""innocent people"" should not fear oversight and that the sheer volume of data collected would effectively protect individuals from targeted harassment.
 The Core Debate
 
@@ -1091,7 +1091,7 @@ The responder challenges this by focusing on the slippery slope of state power a
 
 The Outcome
 
-The OP ultimately amended their view, not because they personally valued privacy more, but because they recognized that creating fair-use laws and warrant protocols is legally complex. They concluded that while the concept of a safe, monitored city is appealing, the real-world risk of unregulated ""spy-bots"" makes drone deployment a dangerous proposition."
+The OP ultimately amended their view, not because they personally valued privacy more, but because they recognized that creating fair-use laws and warrant protocols is legally complex. They concluded that while the concept of a safe, monitored city is appealing, the real-world risk of unregulated ""spy-bots"" makes drone deployment a dangerous proposition.",0,0,0,0
 30_s,"The OP argues that confidence is a primitive mindset that fosters ""blissful ignorance."" They believe that true growth requires constant self-doubt and the perpetual questioning of one’s beliefs. In their view, confident people are ""fanatics"" who refuse to re-examine their perspectives, whereas overthinking is a virtue that ensures careful consideration.
 The Rebuttal
 
@@ -1105,7 +1105,7 @@ The responder challenges this by distinguishing between intellectual humility an
 
 The Outcome
 
-The OP awarded a Delta, accepting a new definition: confidence is shifting the burden of proof off oneself. They realized their aversion was likely emotional—a resentment of the social rewards given to the ""blissfully ignorant""—rather than a logical flaw in the utility of confidence itself."
+The OP awarded a Delta, accepting a new definition: confidence is shifting the burden of proof off oneself. They realized their aversion was likely emotional—a resentment of the social rewards given to the ""blissfully ignorant""—rather than a logical flaw in the utility of confidence itself.",1,2,0,0
 30_u,"The OP argues that confidence is a primitive mindset that fosters ignorance. They believe that true growth requires constant self-doubt and that confident people are ""fanatics"" who refuse to re-examine their beliefs. In their view, ""overthinking"" is a virtue, and those who speak with certainty are essentially being dishonest about the complexity of reality.
 The Rebuttal
 
@@ -1119,7 +1119,7 @@ The responder challenges this by re-contextualizing confidence not as ""blind ce
 
 The Outcome
 
-The OP ultimately acknowledges that their definition of confidence—speaking loudly without thinking—might be too narrow. They admit their stance is partially driven by an emotional distaste for how society rewards outspoken, potentially ignorant individuals, but they begin to see the nuance in viewing confidence as a spectrum of self-awareness."
+The OP ultimately acknowledges that their definition of confidence—speaking loudly without thinking—might be too narrow. They admit their stance is partially driven by an emotional distaste for how society rewards outspoken, potentially ignorant individuals, but they begin to see the nuance in viewing confidence as a spectrum of self-awareness.",0,1,2,0
 31_s,"The OP argues that artists’ posthumous privacy should be legally and morally protected. Citing examples like Michael Jackson’s unreleased demos and J.R.R. Tolkien’s Beowulf translation, the OP contends that publishing works against an author's explicit wishes is a ""problematic invasion of privacy"" and that the public should boycott such material.
 The Artistic Merit Rebuttal
 
@@ -1131,7 +1131,7 @@ The responder challenges this by highlighting that artists are often poor judges
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that ""greatness"" is subjective. They conceded that if a work is kept private solely because the artist believes it is of poor quality, but scholars or the public find immense artistic or historical value in it, publication is justified."
+The OP awarded a Delta, acknowledging that ""greatness"" is subjective. They conceded that if a work is kept private solely because the artist believes it is of poor quality, but scholars or the public find immense artistic or historical value in it, publication is justified.",1,2,2,0
 31_u,"This debate explores whether the posthumous publication of an artist's private or unfinished work constitutes a violation of their right to privacy.
 The OP’s Argument
 
@@ -1146,7 +1146,7 @@ The responder challenges the notion of posthumous rights with a practical stance
 
 The Outcome
 
-The discussion concludes on the distinction between scholarly and prurient intent. The OP admits that ""unlimited privacy"" does not exist and that scholarly importance can justify publication, much like a medical autopsy is distinct from bodily mutilation. However, they note that since anyone can buy a published book, the burden of ethical consumption ultimately lies with the individual reader's intentions."
+The discussion concludes on the distinction between scholarly and prurient intent. The OP admits that ""unlimited privacy"" does not exist and that scholarly importance can justify publication, much like a medical autopsy is distinct from bodily mutilation. However, they note that since anyone can buy a published book, the burden of ethical consumption ultimately lies with the individual reader's intentions.",1,1,1,0
 32_s,"The OP argues that opposing abortion in the first trimester is ""much harder"" for an atheist than a Christian. They contend that atheists rely on empirical evidence—such as the lack of fetal consciousness before 24 weeks—making first-trimester opposition irrational. Conversely, they argue Christians can defer to the authority of a divine text or religious leader, bypassing the need for scientific evidence.
 The Rebuttal
 
@@ -1160,7 +1160,7 @@ The responder challenges the OP’s assumptions about religious and secular epis
 
 The Outcome
 
-The OP awarded a Delta, admitting that their claim relied on a generalization of Christian epistemology. They acknowledged that the core issue is the degree to which individuals actually defer to religious authority versus personal reflection."
+The OP awarded a Delta, admitting that their claim relied on a generalization of Christian epistemology. They acknowledged that the core issue is the degree to which individuals actually defer to religious authority versus personal reflection.",1,2,1,0
 32_u,"The OP argues that opposing abortion in the first trimester is ""much harder"" for an atheist than a Christian. They suggest that while atheists rely on empirical evidence—like the lack of fetal consciousness—Christians can simply defer to the authority of a religious text or leader, making the decision ""cut and dry"" for them.
 The Epistemological Rebuttal
 
@@ -1174,7 +1174,7 @@ The responder challenges the idea that atheists and Christians operate on fundam
 
 The Conclusion
 
-The OP maintains that atheists are less likely to follow a ""culture of unquestioning belief"" compared to religious groups. However, the discussion highlights that both sides essentially navigate the same struggle: balancing the value of potential life against the rights of the mother based on the authorities they choose to trust."
+The OP maintains that atheists are less likely to follow a ""culture of unquestioning belief"" compared to religious groups. However, the discussion highlights that both sides essentially navigate the same struggle: balancing the value of potential life against the rights of the mother based on the authorities they choose to trust.",1,2,2,0
 33_s,"The OP argues that ""checking your privilege"" is a call for historical and cultural self-awareness, not an attack on white people. They contend that the phrase asks individuals to recognize how their unique social position—shaped by race, gender, or religion—colors their perspective, without necessarily invalidating their opinions or achievements.
 The Argument for Derailment
 
@@ -1188,7 +1188,7 @@ The responder challenges the practical utility of the phrase in discourse:
 
 The Outcome
 
-The OP awarded a Delta, conceding that while the principle is valid, the phrase’s actual usage often serves to invalidate opinions and turn conversations into ""circle-jerks of bias."" They realized that the negative connotation prevents the intended message of self-awareness from being received."
+The OP awarded a Delta, conceding that while the principle is valid, the phrase’s actual usage often serves to invalidate opinions and turn conversations into ""circle-jerks of bias."" They realized that the negative connotation prevents the intended message of self-awareness from being received.",1,2,2,0
 33_u,"This debate explores whether the phrase ""check your privilege"" is a valid call for self-awareness or a racially biased assumption of advantage.
 The OP’s Argument
 
@@ -1205,7 +1205,7 @@ The responder challenges the OP by distinguishing between group trends and indiv
 
 The Outcome
 
-The OP maintains that the principle—a call for awareness—is irrefutable because everyone has some relative advantage. However, they concede that the antagonistic connotation and the assumption of specific benefits make the phrase a poor tool for sparking meaningful conversation."
+The OP maintains that the principle—a call for awareness—is irrefutable because everyone has some relative advantage. However, they concede that the antagonistic connotation and the assumption of specific benefits make the phrase a poor tool for sparking meaningful conversation.",1,2,1,0
 34_s,"The OP argues that social or corporate censorship is just as dangerous as government censorship. Citing the ousting of Brendan Eich (Mozilla) and Donald Sterling (NBA), the OP contends that ""freedom from censorship"" is a necessary component of free speech. They argue that boycotting or pressuring companies to fire individuals for their views is ""bullying"" and threatens livelihoods in a way that mirrors government intervention.
 The Market Participation Rebuttal
 
@@ -1219,7 +1219,7 @@ The responder shifts the focus from the speaker’s rights to the consumer’s r
 
 The Outcome
 
-The OP awarded a Delta. While they maintained a personal moral objection to firing people based on private views or identity, they conceded that a boycott is effectively a refusal to buy, and forcing someone not to boycott is an infringement on their own freedom."
+The OP awarded a Delta. While they maintained a personal moral objection to firing people based on private views or identity, they conceded that a boycott is effectively a refusal to buy, and forcing someone not to boycott is an infringement on their own freedom.",1,2,1,0
 34_u,"The OP argues that corporate censorship—the firing of individuals like Brendan Eich or Donald Sterling for private views—is a hypocritical violation of free speech. They contend that ""freedom from censorship"" should be a fundamental right, suggesting that repercussions for speech should involve counter-speech, not the destruction of one's livelihood.
 The Private Contract Rebuttal
 
@@ -1233,7 +1233,7 @@ The responder distinguishes between legal rights and social/economic consequence
 
 The Outcome
 
-The debate ends in a stalemate. The OP maintains an idealist position, arguing that society should protect individuals from losing their jobs over unpopular opinions to prevent a ""trend of censorship."" The responder maintains a pragmatist position, asserting that individuals and private organizations are free to associate (or disassociate) with whomever they choose."
+The debate ends in a stalemate. The OP maintains an idealist position, arguing that society should protect individuals from losing their jobs over unpopular opinions to prevent a ""trend of censorship."" The responder maintains a pragmatist position, asserting that individuals and private organizations are free to associate (or disassociate) with whomever they choose.",1,2,2,0
 35_s,"The OP argues that coins are an ""outdated relic"" that should be abolished. They contend that coins are bulky, inconvenient for modern wallets, and lack a place in a fiat economy where notes are more space-efficient and lightweight.
 The Practicality Rebuttal
 
@@ -1247,7 +1247,7 @@ The responder, drawing on experience with Canadian currency, challenges the OP b
 
 The Outcome
 
-The OP awarded a Delta. They conceded that the irregular shape and physical properties of coins make them superior for small-change transactions, allowing users to quickly ""plonk"" multiple units into a machine—a process that would be cumbersome and prone to error with a stack of small-denomination bills."
+The OP awarded a Delta. They conceded that the irregular shape and physical properties of coins make them superior for small-change transactions, allowing users to quickly ""plonk"" multiple units into a machine—a process that would be cumbersome and prone to error with a stack of small-denomination bills.",1,2,1,0
 35_u,"The OP argues that coins are an outdated relic that should be replaced entirely by notes. They contend that coins are physically inconvenient—they ""jingle,"" scratch items, and possess an irregular shape that defies the sleek design of modern wallets. For the OP, even high-denomination coins (like the $1 and $2 AUD) are ""oddly shaped trinkets"" that are unnecessary in a modern economy.
 The Denomination Argument
 
@@ -1261,7 +1261,7 @@ The responder suggests the issue isn't coins themselves, but low-value denominat
 
 The Conclusion
 
-The debate ends in a stalemate regarding physical comfort. While the responder views coins as handy tools for small transactions and machine payments, the OP remains firm that their physical footprint—analogous to carrying marbles or trinkets—is an unnecessary burden when compared to the stackability and uniformity of banknotes."
+The debate ends in a stalemate regarding physical comfort. While the responder views coins as handy tools for small transactions and machine payments, the OP remains firm that their physical footprint—analogous to carrying marbles or trinkets—is an unnecessary burden when compared to the stackability and uniformity of banknotes.",1,1,2,0
 36_s,"The OP argues that if two drunk individuals have sex, it is illogical for only one (typically the male) to be considered a ""rapist."" They contend that if both are inebriated, neither can legally consent, making them either equally culpable or equally innocent.
 The Legal Pragmatism Rebuttal
 
@@ -1275,7 +1275,7 @@ The responder clarifies the distinction between theoretical definitions of conse
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that the ""practical application"" of the law is more reasonable than the rhetoric found in some advocacy videos. While they remain concerned about the lack of objective evidence in sexual assault cases, they concede that the current system's reliance on situational discretion and intent is a necessary, albeit imperfect, safeguard for both victims and the accused."
+The OP awarded a Delta, acknowledging that the ""practical application"" of the law is more reasonable than the rhetoric found in some advocacy videos. While they remain concerned about the lack of objective evidence in sexual assault cases, they concede that the current system's reliance on situational discretion and intent is a necessary, albeit imperfect, safeguard for both victims and the accused.",1,1,2,0
 36_u,"The OP challenges the logic of ""informed consent"" in scenarios involving alcohol, specifically the idea that if two drunk individuals have sex, the male is often the default ""rapist."" They argue that if alcohol negates the ability to consent, then both parties are either equally incapable of consenting or equally responsible for their actions.
 The Spectrum of Incapacitation
 
@@ -1287,7 +1287,7 @@ The responder attempts to resolve this by focusing on active vs. passive partici
 
 The Stalemate
 
-The OP remains unconvinced, pointing out a logical contradiction in advocacy and legal definitions: if a verbal ""yes"" from a drunk person is legally invalid due to impaired cognitive function, then even an active participant is technically being assaulted. They find it illogical that a person can be held culpable for their actions (like a DUI) while simultaneously being stripped of the legal agency to consent to sex."
+The OP remains unconvinced, pointing out a logical contradiction in advocacy and legal definitions: if a verbal ""yes"" from a drunk person is legally invalid due to impaired cognitive function, then even an active participant is technically being assaulted. They find it illogical that a person can be held culpable for their actions (like a DUI) while simultaneously being stripped of the legal agency to consent to sex.",1,2,2,0
 37_s,"The OP seeks help to stop believing in complex astrology, admitting that while they value critical thinking, they are stuck on the ""dead-on"" accuracy of birth charts and planetary aspects. Their belief has become a source of pessimism, causing them to view relationships as ""doomed"" based on astrological friction points.
 The Psychological Rebuttal
 
@@ -1301,7 +1301,7 @@ The responder challenges the OP’s belief by introducing the concept of psychol
 
 The Outcome
 
-The OP awarded a Delta, realizing that their belief was a flawed attempt to apply logic to the illogical nature of love. They acknowledged that using charts was a defense mechanism to rationalize relationship complexities, and they committed to focusing on ""real life"" instead."
+The OP awarded a Delta, realizing that their belief was a flawed attempt to apply logic to the illogical nature of love. They acknowledged that using charts was a defense mechanism to rationalize relationship complexities, and they committed to focusing on ""real life"" instead.",1,2,2,0
 37_u,"The OP seeks to debunk their own belief in complex astrology (birth charts and planetary aspects), admitting that while they value science, they are stuck on how ""dead-on accurate"" their readings feel. They express a desire to quit because the practice fuels their negativity and relationship anxiety.
 The Scientific Rebuttal
 
@@ -1313,7 +1313,7 @@ The responder targets the psychological and statistical flaws behind astrologica
 
 The Outcome
 
-The OP awarded a Delta, finding the Carlson study to be the ""smoking gun"" they needed. They realized that their perception of ""specificity"" was a cognitive illusion and committed to moving on to ""real life."""
+The OP awarded a Delta, finding the Carlson study to be the ""smoking gun"" they needed. They realized that their perception of ""specificity"" was a cognitive illusion and committed to moving on to ""real life.""",0,0,2,0
 38_s,"The OP, a high school student, argues that while reading is beneficial, it is not essential for a fulfilling and intellectual life. Engaging in martial arts, music, and debate, the OP questions if books are merely a ""societal chosen medium"" or a personal passion rather than a universal necessity.
 The ""Mental Kata"" Rebuttal
 
@@ -1329,7 +1329,7 @@ The responder shifts the view of reading from a chore to a tool for cognitive ex
 
 The Outcome
 
-The OP awarded a Delta, accepting that reading even a few books a year acts as a high-quality ""upgrade"" for the mind. They were convinced that while they don't need to be a voracious reader, books are a unique shortcut to thinking about things they hadn't—and perhaps couldn't—consider on their own."
+The OP awarded a Delta, accepting that reading even a few books a year acts as a high-quality ""upgrade"" for the mind. They were convinced that while they don't need to be a voracious reader, books are a unique shortcut to thinking about things they hadn't—and perhaps couldn't—consider on their own.",1,2,2,0
 38_u,"The OP, a high school senior and active multi-instrumentalist, argues that reading books is not a strict necessity for a fulfilled or intellectual life. While acknowledging its benefits, they find the process ""painful"" and prefer interactive learning, such as class discussions or short-form internet articles.
 The Argument for Depth
 
@@ -1343,7 +1343,7 @@ The responder identifies the OP's childhood interest in The Guardians of Ga'Hool
 
 The Outcome
 
-The OP remains open-minded but largely maintains their stance, agreeing to experiment with high-quality recommendations. The exchange concludes with the idea that the only way to truly perceive the ""necessity"" of books is through the lived experience of reading great ones."
+The OP remains open-minded but largely maintains their stance, agreeing to experiment with high-quality recommendations. The exchange concludes with the idea that the only way to truly perceive the ""necessity"" of books is through the lived experience of reading great ones.",1,1,2,0
 39_s,"The OP presents a philosophical framework where life has no intrinsic value. Instead, value is derived from consciousness, self-awareness, and complex thought. Based on this ""continuity of consciousness"" model, the OP argues that abortion, infanticide, and killing animals or the severely mentally handicapped are not morally wrong because these entities lack the requisite cognitive traits or a ""past wish"" to continue existing.
 The Utilitarian Rebuttal
 
@@ -1357,7 +1357,7 @@ The responder challenges the OP to define ""harm"" and the ""wish to live"" more
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that their initial view was inconsistent. They realized that pleasure and suffering are not just secondary traits but are the foundations of extrinsic value. This shift forced the OP to concede that torture is wrong by default, even for non-self-aware beings, as they are capable of experiencing suffering."
+The OP awarded a Delta, acknowledging that their initial view was inconsistent. They realized that pleasure and suffering are not just secondary traits but are the foundations of extrinsic value. This shift forced the OP to concede that torture is wrong by default, even for non-self-aware beings, as they are capable of experiencing suffering.",1,2,1,0
 39_u,"The OP presents a morality based on Theory of Mind, arguing that life has no intrinsic value unless an entity possesses self-awareness, complex thought, and consciousness. Under this framework, the OP concludes that abortion, infanticide, and the killing of animals or severely mentally handicapped individuals are not inherently wrong, as these beings lack the cognitive attributes that grant life value.
 The Societal Empathy Rebuttal
 
@@ -1369,7 +1369,7 @@ The responder shifts the focus from the intrinsic rights of animals to the psych
 
 The Outcome
 
-The OP remains firm in their position, viewing animal rights as a subjective belief system similar to religion. While they acknowledge that empathy is socially useful, they maintain that there is no objective moral basis for enforcing animal rights on those who do not share that belief."
+The OP remains firm in their position, viewing animal rights as a subjective belief system similar to religion. While they acknowledge that empathy is socially useful, they maintain that there is no objective moral basis for enforcing animal rights on those who do not share that belief.",1,2,2,0
 40_s,"The OP argues that vinyl is an objectively inferior format compared to high-quality digital recordings. They contend that any perceived ""warmth"" is a reproducible side effect and that modern collecting is driven by pretentiousness, hoarding, or misplaced nostalgia for a medium with technical limitations like surface noise and hardware variance.
 The Ritual and Experience Rebuttal
 
@@ -1383,7 +1383,7 @@ The responder challenges the idea that value is defined solely by audio fidelity
 
 The Outcome
 
-The OP awarded a Delta, acknowledging that ""value"" is not purely technical. They conceded that if a specific medium provides an individual with joy or a unique experiential connection, that alone constitutes inherent value, regardless of whether the audio is technically ""better."""
+The OP awarded a Delta, acknowledging that ""value"" is not purely technical. They conceded that if a specific medium provides an individual with joy or a unique experiential connection, that alone constitutes inherent value, regardless of whether the audio is technically ""better.""",1,2,2,0
 40_u,"The OP argues that vinyl is an outdated, low-quality format and that its resurgence is driven by pretentiousness, hoarding, or nostalgia. They contend that digital audio is objectively superior and that the physical ritual of records is a valueless ""side effect.""
 The Community and Content Rebuttal
 
@@ -1397,7 +1397,7 @@ The responder, a young music student, challenges these labels by highlighting as
 
 The Outcome
 
-The OP realized their distaste stemmed from a perceived elitism within vinyl culture—the idea that collectors are ""more passionate"" than digital listeners. While the OP still views the format as technically inferior, they concede that for some, vinyl is a valid, non-pretentious way to express a passion for music."
+The OP realized their distaste stemmed from a perceived elitism within vinyl culture—the idea that collectors are ""more passionate"" than digital listeners. While the OP still views the format as technically inferior, they concede that for some, vinyl is a valid, non-pretentious way to express a passion for music.",0,1,1,0
 41_s,"The OP argues that when a pregnant woman refuses to undergo pregnancy but the man wants to raise the child, a compromise is impossible. In this zero-sum scenario, either the woman is forced to carry the child against her will, or the man loses his chance at fatherhood. The OP specifies that the woman’s objection is strictly the physical experience of pregnancy, not the subsequent responsibilities of parenthood.
 The ""Shared Sacrifice"" Rebuttal
 
@@ -1411,7 +1411,7 @@ The responder suggests that compromise is possible if both parties lower their e
 
 The Outcome
 
-The OP awarded a Delta, conceding that this technically constitutes a compromise because both parties ""give something up."" However, they noted a personal struggle with this logic, as the resulting child becomes the ""victim"" of the compromise, highlighting the gap between a logical solution and a morally comfortable one."
+The OP awarded a Delta, conceding that this technically constitutes a compromise because both parties ""give something up."" However, they noted a personal struggle with this logic, as the resulting child becomes the ""victim"" of the compromise, highlighting the gap between a logical solution and a morally comfortable one.",1,2,2,0
 41_u,"The OP posits that the choice between abortion and pregnancy is a binary, zero-sum game when the woman wants to terminate and the man wants to father the child. They argue that because current science requires the woman's body to carry the fetus, there is no middle ground: one party must lose entirely.
 The Incompatibility Rebuttal
 
@@ -1425,7 +1425,7 @@ The responder challenges the premise that a ""compromise"" is even necessary or 
 
 The Outcome
 
-The debate ends in a stalemate. The OP clarifies that their ""agenda"" was simply to crowd-source a potential third option they hadn't considered. While the responder finds the OP’s specific hypothetical—a woman who cannot be moved by any incentive—to be unlikely, they agree that if both parties are truly ""immovable,"" the situation remains an uncompromising deadlock."
+The debate ends in a stalemate. The OP clarifies that their ""agenda"" was simply to crowd-source a potential third option they hadn't considered. While the responder finds the OP’s specific hypothetical—a woman who cannot be moved by any incentive—to be unlikely, they agree that if both parties are truly ""immovable,"" the situation remains an uncompromising deadlock.",1,2,2,0
 42_s,"The OP initially argues that ""rape culture"" is a result of female evolutionary selection. They claim that because women choose dominant partners and often have ""forced sex"" fantasies, they have genetically programmed a societal preference for aggressive, non-consensual behavior.
 The Evolutionary and Psychological Rebuttal
 
@@ -1439,7 +1439,7 @@ The responder deconstructs this by highlighting the historical and physiological
 
 The Outcome
 
-The OP awarded a Delta, conceding that rape culture is not exclusively ""self-selected"" by women. However, they concluded with a controversial secondary view, suggesting that since these dynamics shaped current society, they might have had some ""societal level"" utility, a point the responder heavily contested throughout the exchange."
+The OP awarded a Delta, conceding that rape culture is not exclusively ""self-selected"" by women. However, they concluded with a controversial secondary view, suggesting that since these dynamics shaped current society, they might have had some ""societal level"" utility, a point the responder heavily contested throughout the exchange.",1,2,1,0
 42_u,"The provided exchange is a ""Change My View"" (CMV) debate regarding the origins of ""rape culture.""
 
 The Original Poster (OP) argues that rape culture is biologically ""self-selected"" by women. They claim that because women historically choose dominant, aggressive partners, they genetically perpetuate traits associated with physical force. The OP further suggests that female interests in BDSM or remaining in abusive relationships are evidence of an innate ""genetic need"" to be dominated.
@@ -1454,7 +1454,7 @@ The Respondent challenges these claims by:
 
     Debunking the ""Strong Man"" Myth: Pointing out that rape is not exclusive to ""big, strong"" men, as it often involves weapons, drugs, or coercion regardless of the perpetrator's physical stature.
 
-Ultimately, the respondent argues that female mate selection does not logically or biologically justify or cause rape culture."
+Ultimately, the respondent argues that female mate selection does not logically or biologically justify or cause rape culture.",1,1,1,0
 43_s,"In this debate, the OP (Original Poster) argues for a government-mandated cap on corporate profit margins (proposed at 15% over five years). They contend that extreme profits signal corruption, consumer exploitation, or wage suppression. Under this plan, ""excess"" earnings would be reinvested in R&D and employees or confiscated by the government for public tax breaks.
 
 The rebutter challenges this on three fronts:
@@ -1465,7 +1465,7 @@ The rebutter challenges this on three fronts:
 
     Practicality: Such a limit would likely trigger massive tax evasion, overseas flight, and ""book-cooking"" rather than genuine reinvestment.
 
-The OP ultimately awards a Delta (Δ), acknowledging that while their system aims to curb exploitation, the root issue is likely the ""marriage between corporations and government"" (lobbying/regulatory capture) rather than profit itself. They conclude that fixing existing corporate-political ties is a more effective path than fundamentally altering the nature of profit."
+The OP ultimately awards a Delta (Δ), acknowledging that while their system aims to curb exploitation, the root issue is likely the ""marriage between corporations and government"" (lobbying/regulatory capture) rather than profit itself. They conclude that fixing existing corporate-political ties is a more effective path than fundamentally altering the nature of profit.",1,1,2,0
 43_u,"This debate centers on whether the government should cap corporate profit margins (suggested at 15% over five years) to prevent exploitation and corruption.
 
 The OP (Original Poster) argues that excessive profits indicate a company is overcharging customers, underinvesting in services, or suppressing wages. They propose a system where ""excess"" profit must be reinvested in R&D, employee pay, or charity; otherwise, it is confiscated by the government and redistributed as tax breaks.
@@ -1478,4 +1478,4 @@ The rebutter counters with the profit motive, using the video game industry as a
 
     Signal to competitors to enter the market, which naturally lowers prices through competition.
 
-The OP remains skeptical, pointing to ""too-big-to-fail"" examples like Walmart and McDonald’s, arguing that these corporations maintain high profits while keeping wages low, suggesting that the market does not always self-correct. The rebutter concedes that monopolies (like Comcast) require regulation but maintains that in a free market, overcharging is generally unsustainable."
+The OP remains skeptical, pointing to ""too-big-to-fail"" examples like Walmart and McDonald’s, arguing that these corporations maintain high profits while keeping wages low, suggesting that the market does not always self-correct. The rebutter concedes that monopolies (like Comcast) require regulation but maintains that in a free market, overcharging is generally unsustainable.",1,2,2,
