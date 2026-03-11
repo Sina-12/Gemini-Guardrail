@@ -1,6 +1,20 @@
 # Run with: uvicorn backend:app --reload
 
 
+from fastapi.middleware.cors import CORSMiddleware
+
+
+
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 from fastapi import FastAPI
 import pandas as pd
@@ -8,7 +22,7 @@ from difflib import get_close_matches
 
 app = FastAPI()
 
-df = pd.read_csv("../docs/0-43_Annotations.csv")
+df = pd.read_csv("../data/0-129_Annotations.csv")
 
 @app.get("/nearest-match")
 def nearest_match(query: str):
@@ -28,19 +42,30 @@ def nearest_match(query: str):
 
 #on windows: http://localhost:8000/ 
 
-@app.get("/keyword-search")
-def keyword_search(keyword: str, id_suffix: str = None):
-    mask = df["summary"].str.contains(keyword, case=False, na=False)
-    
-    if id_suffix:
-        mask &= df["arg_id"].str.endswith(f"_{id_suffix}")
-    
-    results = df[mask]
+@app.get("/search")
+def search(q: str = "", annotated: bool = False):
+    # 1. Filter by keyword in the 'summary' column
+    results = df[df["summary"].str.contains(q, case=False, na=False)]
 
-    if results.empty:
-        return {"results": []}
+    # 2. If 'annotated' checkbox is checked, maybe filter by score > 0 
+    # (Adjust this logic based on how your CSV defines 'annotated')
+    if annotated:
+        results = results[results["success_score"] > 0]
 
-    return {"results": results.to_dict(orient="records")}
+    # 3. Convert to dictionary
+    # We rename columns on the fly to match your JS 'item.doc_id' etc.
+    output = []
+    for _, row in results.iterrows():
+        output.append({
+            "doc_id": row["arg_id"],
+            "summary_text": row["summary"],
+            "source_text": row.get("main_argument", "No source available"),
+            "success_score": row.get("success_score", 0),
+            "brevity_score": row.get("brevity_score", 0),
+            "accuracy_score": row.get("accuracy_score", 0)
+        })
+    
+    return output
 
 # **Call it like:**
 
