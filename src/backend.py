@@ -16,9 +16,9 @@ app.add_middleware(
 )
 
 # ── Load & enrich data ─────────────────────────────────────────────────────────
-df = pd.read_csv("../data/44-86_Annotations.csv", encoding="latin1")
+df = pd.read_csv("data/0-129_Annotations.csv", encoding="latin1")
+df = df.fillna(0) 
 
-# Extract the numeric thread ID and variant (_s or _u) from arg_id
 df["thread_num"] = df["arg_id"].str.extract(r"(\d+)").astype(int)
 df["variant"]    = df["arg_id"].str.extract(r"_([su])$")
 
@@ -31,18 +31,20 @@ def serve_index():
 
 
 # ── Helper ─────────────────────────────────────────────────────────────────────
+
+
 def row_to_dict(row):
     return {
-        "arg_id":      row["arg_id"],
-        "thread_num":  int(row["thread_num"]),
-        "variant":     row["variant"],          # "s" or "u"
-        "summary":     row["summary"],
-        "sentiment":   int(row["sentiment"]),   # 0 or 1
-        "accuracy":    int(row["accuracy"]),    # 1 or 2
-        "brevity":     int(row["brevity"]),     # 1 or 2
-        "reviewer_id": int(row["reviewer_id"]),
+        "arg_id":        str(row["arg_id"]),
+        "thread_num":    int(row["thread_num"]),
+        "variant":       str(row["variant"]),
+        "summary":       str(row["summary"]),
+        "sentiment":     int(row.get("success_score", 0)), 
+        "accuracy":      int(row.get("accuracy_score", 0)),
+        "brevity":       int(row.get("brevity_score", 0)),
+        "reviewer_id":   "System", 
+        "source_text":   str(row.get("main_argument", "No source text"))
     }
-
 
 # ── GET /threads ───────────────────────────────────────────────────────────────
 # Returns all threads, optionally filtered by keyword.

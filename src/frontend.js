@@ -91,8 +91,8 @@ function renderThreadList(threads) {
 
 // Compact pill showing avg score for a variant
 function scorePill(label, variant) {
-    const sentClass = variant.sentiment === 1 ? 'good' : 'bad';
-    return `<span class="pill pill-${label.toLowerCase()} pill-sent-${sentClass}" title="Sentiment:${variant.sentiment} Accuracy:${variant.accuracy} Brevity:${variant.brevity}">${label}</span>`;
+    const sentClass = variant.success_score === 1 ? 'good' : 'bad';
+    return `<span class="pill pill-${label.toLowerCase()} pill-sent-${sentClass}" title="Sentiment:${variant.success_score} Accuracy:${variant.accuracy_score} Brevity:${variant.brevity_score}">${label}</span>`;
 }
 
 // ── Open thread detail ─────────────────────────────────────────────────────────
@@ -149,9 +149,9 @@ function summaryCard(variant, type) {
         <div class="card-label">${typeLabel}</div>
 
         <div class="scores-row">
-            ${scoreBlock('Sentiment', variant.sentiment, 'sentiment')}
-            ${scoreBlock('Accuracy',  variant.accuracy,  'scale2')}
-            ${scoreBlock('Brevity',   variant.brevity,   'scale2')}
+            ${scoreBlock('Sentiment', variant.success_score, 'sentiment')}
+            ${scoreBlock('Accuracy',  variant.accuracy_score,  'scale2')}
+            ${scoreBlock('Brevity',   variant.brevity_score,   'scale2')}
         </div>
 
         <div class="summary-text-box">
