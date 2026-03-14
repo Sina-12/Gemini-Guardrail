@@ -1,10 +1,10 @@
 # Run with: uvicorn backend:app --reload
 
-
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-
-
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import pandas as pd
 
 app = FastAPI()
 
@@ -15,70 +15,70 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ── Load & enrich data ─────────────────────────────────────────────────────────
+df = pd.read_csv("../data/44-86_Annotations.csv", encoding="latin1")
 
-from fastapi import FastAPI
-import pandas as pd
-from difflib import get_close_matches
+# Extract the numeric thread ID and variant (_s or _u) from arg_id
+df["thread_num"] = df["arg_id"].str.extract(r"(\d+)").astype(int)
+df["variant"]    = df["arg_id"].str.extract(r"_([su])$")
 
-app = FastAPI()
+# ── Serve static files ─────────────────────────────────────────────────────────
+app.mount("/static", StaticFiles(directory="."), name="static")
 
-df = pd.read_csv("../data/0-129_Annotations.csv")
-
-@app.get("/nearest-match")
-def nearest_match(query: str):
-    arg_ids = df["arg_id"].astype(str).tolist()
-    matches = get_close_matches(query, arg_ids, n=1, cutoff=0.1)
-
-    if not matches:
-        return {"match": None}
-
-    matched_row = df[df["arg_id"].astype(str) == matches[0]].iloc[0]
-    return matched_row.to_dict(into=dict)
-
-# **Call it like:**
+@app.get("/")
+def serve_index():
+    return FileResponse("index.html")
 
 
-# http://127.0.0.1:8000/nearest-match?query=0_s
-
-#on windows: http://localhost:8000/ 
-
-@app.get("/search")
-def search(q: str = "", annotated: bool = False):
-    # 1. Filter by keyword in the 'summary' column
-    results = df[df["summary"].str.contains(q, case=False, na=False)]
-
-    # 2. If 'annotated' checkbox is checked, maybe filter by score > 0 
-    # (Adjust this logic based on how your CSV defines 'annotated')
-    if annotated:
-        results = results[results["success_score"] > 0]
-
-    # 3. Convert to dictionary
-    # We rename columns on the fly to match your JS 'item.doc_id' etc.
-    output = []
-    for _, row in results.iterrows():
-        output.append({
-            "doc_id": row["arg_id"],
-            "summary_text": row["summary"],
-            "source_text": row.get("main_argument", "No source available"),
-            "success_score": row.get("success_score", 0),
-            "brevity_score": row.get("brevity_score", 0),
-            "accuracy_score": row.get("accuracy_score", 0)
-        })
-    
-    return output
-
-# **Call it like:**
-
-# # Just keyword
-# http://127.0.0.1:8000/keyword-search?keyword=abortion
-#on windows: http://localhost:8000/ 
+# ── Helper ─────────────────────────────────────────────────────────────────────
+def row_to_dict(row):
+    return {
+        "arg_id":      row["arg_id"],
+        "thread_num":  int(row["thread_num"]),
+        "variant":     row["variant"],          # "s" or "u"
+        "summary":     row["summary"],
+        "sentiment":   int(row["sentiment"]),   # 0 or 1
+        "accuracy":    int(row["accuracy"]),    # 1 or 2
+        "brevity":     int(row["brevity"]),     # 1 or 2
+        "reviewer_id": int(row["reviewer_id"]),
+    }
 
 
-# # Keyword + filter by _s IDs only
-# http://127.0.0.1:8000/keyword-search?keyword=abortion&id_suffix=s
-#on windows: http://localhost:8000/ 
+# ── GET /threads ───────────────────────────────────────────────────────────────
+# Returns all threads, optionally filtered by keyword.
+# Each thread object contains both its _s and _u summaries.
+#
+# Example: GET /threads
+#          GET /threads?q=abortion
+@app.get("/threads")
+def get_threads(q: str = ""):
+    filtered = df.copy()
+
+    if q.strip():
+        mask = filtered["summary"].str.contains(q.strip(), case=False, na=False)
+        matching_threads = filtered.loc[mask, "thread_num"].unique()
+        filtered = filtered[filtered["thread_num"].isin(matching_threads)]
+
+    threads = {}
+    for _, row in filtered.iterrows():
+        t = int(row["thread_num"])
+        if t not in threads:
+            threads[t] = {"thread_num": t, "s": None, "u": None}
+        threads[t][row["variant"]] = row_to_dict(row)
+
+    return sorted(threads.values(), key=lambda x: x["thread_num"])
 
 
-# # Keyword + filter by _u IDs only
-# http://127.0.0.1:8000/keyword-search?keyword=abortion&id_suffix=u
-#on windows: http://localhost:8000/ 
+# ── GET /thread/{thread_num} ───────────────────────────────────────────────────
+# Returns both variants for a single thread.
+#
+# Example: GET /thread/44
+@app.get("/thread/{thread_num}")
+def get_thread(thread_num: int):
+    rows = df[df["thread_num"] == thread_num]
+    if rows.empty:
+        return {"error": "Thread not found"}
+    result = {"thread_num": thread_num, "s": None, "u": None}
+    for _, row in rows.iterrows():
+        result[row["variant"]] = row_to_dict(row)
+    return result
