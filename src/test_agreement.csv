@@ -1,4 +1,4 @@
-doc_id,reviewer_id,success,brevity,accuracy
+doc_id,annotator,success,brevity,accuracy
 s0_s,0,,,
 s1_s,0,,,
 s2_u,0,,,
