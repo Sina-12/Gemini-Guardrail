@@ -34,8 +34,11 @@ Press Ctrl+C in the command window used to run the program and close the browser
 This repository is organized to separate source code, data, and documentation for each sprint.
 
 ### `src/`
-Contains all Python scripts used for data collection and processing.
+Contains all Python scripts used for running the corpus, as well as the ones used for data collection and processing.
 
+- `frontend.js` - the frontend (page) code.
+- `backend.py` - the backend (corpus accessing) code.
+- `index.html` - the base HTML landing page for the corpus.
 - `corpus_preprocess.py` - obtains data from ConvoKit and processes it into a format ready to be fed into an LLM to summarize.
 - `scraper.py` - scrapes r/ChangeMyView for the latest 100 posts and formats them like the processed ConvoKit data.
 - `calculate_agreement.py` - calculates interannotater agreement across entries that have multiple annotators.
