@@ -3,30 +3,30 @@ Project for COLX 523, for analysis of LLM summaries of r/ChangeMyView debates/ar
 
 For sprint-specific READMEs, see docs/. 
 
-## How to run the corpus collection proof of concept
+## How to run the corpus
 
 ### 1. Clone the repository
 
-git clone <REPO_URL>  
-cd <REPO_NAME>
+`git clone <REPO_URL> `
+`cd <REPO_NAME>`
 
-### 2. Install the required package
+Then, navigate to the /src folder.
 
-pip install requests
+### 2. Install the required packages
 
-### 3. Run the script
+`pip install uvicorn fastapi`
 
-python src/download_reddit_doc.py
+### 3. Run and open the server
 
-### 4. Expected output
+`uvicorn backend:app --reload`
 
-After the script runs, you should see:
+Then, navigate to http://127.0.0.1:8000 in a browser tab.
 
-Downloaded one document to data/raw/reddit_comment.json
+For specifics on using the frontend, see `docs/frontend_explanation.md`.
 
-The file will be saved at:
+### 4. Stopping the server
 
-data/raw/reddit_comment.json
+Press Ctrl+C in the command window used to run the program and close the browser tab.
 
 
 ## Repository structure
