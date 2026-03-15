@@ -22,12 +22,11 @@ Then, navigate to the /src folder.
 
 Then, navigate to http://127.0.0.1:8000 in a browser tab.
 
-For specifics on using the frontend, see `docs/frontend_explanation.md`.
+For specific technical documentation of the frontend, see `docs/frontend_explanation.md`.
 
 ### 4. Stopping the server
 
 Press Ctrl+C in the command window used to run the program and close the browser tab.
-
 
 ## Repository structure
 
@@ -38,7 +37,7 @@ Contains all Python scripts used for running the corpus, as well as the ones use
 
 - `frontend.js` - the frontend (page) code.
 - `backend.py` - the backend (corpus accessing) code.
-- `index.html` - the base HTML landing page for the corpus.
+- `index.html` - the base HTML for parsing the corpus.
 - `corpus_preprocess.py` - obtains data from ConvoKit and processes it into a format ready to be fed into an LLM to summarize.
 - `scraper.py` - scrapes r/ChangeMyView for the latest 100 posts and formats them like the processed ConvoKit data.
 - `calculate_agreement.py` - calculates interannotater agreement across entries that have multiple annotators.
