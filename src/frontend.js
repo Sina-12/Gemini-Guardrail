@@ -1,8 +1,15 @@
 // ── State ──────────────────────────────────────────────────────────────────────
-let allThreads   = [];   // full dataset loaded on boot
-let activeThread = null; // currently open thread number
+// Store all thread data after loading and keep track of the thread the user opened
+let allThreads   = [];
+let activeThread = null;
 
 // ── Boot ───────────────────────────────────────────────────────────────────────
+/**
+ * Set up the page once the HTML is fully loaded.
+ *
+ * This loads the initial data from the back end and connects the search box
+ * and search button to the filtering logic.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     loadAllThreads();
 
@@ -14,10 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ── Data loading ───────────────────────────────────────────────────────────────
+/**
+ * Load all thread data from the back end when the page first opens.
+ *
+ * This gives the app the full set of threads so the list can be shown right away.
+ * If the request fails, an error message is shown in the results area.
+ */
 async function loadAllThreads() {
     setResultsLoading(true);
     try {
-        const res  = await fetch('/threads');
+        const res = await fetch('/threads');
         allThreads = await res.json();
         renderThreadList(allThreads);
     } catch (err) {
@@ -28,6 +41,12 @@ async function loadAllThreads() {
 }
 
 // ── Search / filter ────────────────────────────────────────────────────────────
+/**
+ * Filter threads based on the user's search query.
+ *
+ * If the search box is empty, this reloads all threads. Otherwise it sends
+ * the keyword to the back end and shows only matching results.
+ */
 async function filterThreads() {
     const q = document.getElementById('search-input').value.trim();
     setResultsLoading(true);
@@ -36,7 +55,6 @@ async function filterThreads() {
         const res = await fetch(url);
         const threads = await res.json();
         renderThreadList(threads);
-        // Update count badge
         document.getElementById('result-count').textContent =
             `${threads.length} thread${threads.length !== 1 ? 's' : ''}`;
     } catch (err) {
@@ -47,6 +65,12 @@ async function filterThreads() {
 }
 
 // ── Render thread list ─────────────────────────────────────────────────────────
+/**
+ * Render the list of thread cards in the left panel.
+ *
+ * Each card shows the thread number, small status pills, and a short snippet.
+ * Clicking a card opens the full detail view on the right side.
+ */
 function renderThreadList(threads) {
     const container = document.getElementById('results-container');
     document.getElementById('result-count').textContent =
@@ -68,11 +92,11 @@ function renderThreadList(threads) {
         if (thread.thread_num === activeThread) card.classList.add('active');
         card.dataset.threadNum = thread.thread_num;
 
-        // Derive a topic snippet from the _s summary (or _u if _s missing)
+        // Use the original branch text first for the snippet, then fall back to the summary
         const anchor = thread.s || thread.u;
-        const snippet = anchor ? anchor.summary.substring(0, 90).replace(/\n/g, ' ') + '…' : '—';
+        const snippetSource = anchor?.source_text || anchor?.summary || '—';
+        const snippet = snippetSource.substring(0, 90).replace(/\n/g, ' ') + '…';
 
-        // Score pills for whichever variants exist
         const sBadge = thread.s ? scorePill('S', thread.s) : '<span class="pill pill-missing">S —</span>';
         const uBadge = thread.u ? scorePill('U', thread.u) : '<span class="pill pill-missing">U —</span>';
 
@@ -89,17 +113,29 @@ function renderThreadList(threads) {
     });
 }
 
-// Compact pill showing avg score for a variant
+/**
+ * Build a small score pill for the thread list.
+ *
+ * This gives a quick visual cue for whether the sentiment label was correct
+ * for the successful or unsuccessful side.
+ */
 function scorePill(label, variant) {
-    const sentClass = variant.success_score === 1 ? 'good' : 'bad';
-    return `<span class="pill pill-${label.toLowerCase()} pill-sent-${sentClass}" title="Sentiment:${variant.success_score} Accuracy:${variant.accuracy_score} Brevity:${variant.brevity_score}">${label}</span>`;
+    const sentClass = variant.sentiment === 1 ? 'good' : 'bad';
+    return `<span class="pill pill-${label.toLowerCase()} pill-sent-${sentClass}" title="Sentiment:${variant.sentiment} Accuracy:${variant.accuracy} Brevity:${variant.brevity}">${label}</span>`;
 }
 
 // ── Open thread detail ─────────────────────────────────────────────────────────
+/**
+ * Open one thread in the detail pane.
+ *
+ * This highlights the selected card, then shows the successful and
+ * unsuccessful branches side by side with their original branch text
+ * and summary cards.
+ */
 function openThread(thread) {
     activeThread = thread.thread_num;
 
-    // Highlight active card
+    // Highlight the selected thread in the list
     document.querySelectorAll('.thread-card').forEach(c => {
         c.classList.toggle('active', +c.dataset.threadNum === activeThread);
     });
@@ -110,18 +146,24 @@ function openThread(thread) {
         <div class="detail-header">
             <div class="detail-title-row">
                 <h2>Thread <span class="accent">#${thread.thread_num}</span></h2>
-                <span class="reviewer-tag">Reviewer ${thread.s?.reviewer_id ?? thread.u?.reviewer_id}</span>
+                <span class="reviewer-tag">Reviewer ${thread.s?.reviewer_id ?? thread.u?.reviewer_id ?? 'Unknown'}</span>
             </div>
-            <p class="detail-subtitle">Compare the <em>successful</em> and <em>unsuccessful</em> summaries for this Reddit debate — and their annotation scores.</p>
+            <p class="detail-subtitle">Compare the <em>successful</em> and <em>unsuccessful</em> summaries for this Reddit debate and their annotation scores.</p>
         </div>
 
         <div class="summary-grid">
-            ${summaryCard(thread.s, 's')}
-            ${summaryCard(thread.u, 'u')}
+            <div class="thread-column">
+                ${originalThreadBox(thread.s, 's')}
+                ${summaryCard(thread.s, 's')}
+            </div>
+            <div class="thread-column">
+                ${originalThreadBox(thread.u, 'u')}
+                ${summaryCard(thread.u, 'u')}
+            </div>
         </div>
     `;
 
-    // Expand/collapse full summary
+    // Add click behavior for expanding and collapsing summary text
     pane.querySelectorAll('.toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const card = btn.closest('.summary-card');
@@ -129,9 +171,64 @@ function openThread(thread) {
             btn.textContent = card.classList.contains('expanded') ? 'Show less ↑' : 'Read full summary ↓';
         });
     });
+
+    // Add click behavior for expanding and collapsing original thread text
+    pane.querySelectorAll('.thread-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const box = btn.closest('.original-thread-box');
+            box.classList.toggle('expanded');
+            btn.textContent = box.classList.contains('expanded') ? 'Show less ↑' : 'Read full thread ↓';
+        });
+    });
 }
 
-// ── Build a summary card (s or u) ─────────────────────────────────────────────
+// ── Original thread box ────────────────────────────────────────────────────────
+/**
+ * Build the original thread box for either the successful or unsuccessful side.
+ *
+ * This shows the source branch text that the summary came from, so users can
+ * compare the summary against the original discussion.
+ */
+function originalThreadBox(variant, type) {
+    if (!variant) {
+        return `<div class="original-thread-box original-thread-box--missing">
+            <div class="original-thread-label">${type === 's' ? 'Original Successful Branch' : 'Original Unsuccessful Branch'}</div>
+            <div class="missing-text">No original thread text available for this variant.</div>
+        </div>`;
+    }
+
+    const label = type === 's' ? 'Original Successful Branch' : 'Original Unsuccessful Branch';
+    const sourceText = (variant.source_text || '').trim();
+
+    if (!sourceText) {
+        return `<div class="original-thread-box original-thread-box--missing">
+            <div class="original-thread-label">${label}</div>
+            <div class="missing-text">No original thread text available for this variant.</div>
+        </div>`;
+    }
+
+    // Show a shorter preview first, but keep the full text available
+    const shortText = sourceText.substring(0, 900).replace(/\n/g, '<br>');
+    const fullText = sourceText.replace(/\n/g, '<br>');
+
+    return `
+    <div class="original-thread-box">
+        <div class="original-thread-label">${label}</div>
+        <div class="original-thread-text-box">
+            <div class="original-thread-preview">${shortText}…</div>
+            <div class="original-thread-full">${fullText}</div>
+            <button class="thread-toggle-btn">Read full thread ↓</button>
+        </div>
+    </div>`;
+}
+
+// ── Build a summary card ───────────────────────────────────────────────────────
+/**
+ * Build the summary card for one side of the thread.
+ *
+ * This shows the summary text, the annotation scores, and some small metadata
+ * like the branch id and reviewer id.
+ */
 function summaryCard(variant, type) {
     if (!variant) {
         return `<div class="summary-card summary-card--${type} summary-card--missing">
@@ -140,18 +237,43 @@ function summaryCard(variant, type) {
         </div>`;
     }
 
-    const typeLabel  = type === 's' ? '✓ Successful argument' : '✗ Unsuccessful argument';
-    const shortText  = variant.summary.substring(0, 340).replace(/\n/g, '<br>');
-    const fullText   = variant.summary.replace(/\n/g, '<br>');
+    const typeLabel = type === 's' ? '✓ Successful argument' : '✗ Unsuccessful argument';
+    const summaryText = (variant.summary || '').trim();
+
+    if (!summaryText) {
+        return `
+        <div class="summary-card summary-card--${type}">
+            <div class="card-label">${typeLabel}</div>
+
+            <div class="scores-row">
+                ${scoreBlock('Sentiment', variant.sentiment, 'sentiment')}
+                ${scoreBlock('Accuracy', variant.accuracy, 'scale2')}
+                ${scoreBlock('Brevity', variant.brevity, 'scale2')}
+            </div>
+
+            <div class="summary-text-box">
+                <div class="missing-text">No summary text available for this variant.</div>
+            </div>
+
+            <div class="meta-row">
+                <span class="meta-item">ID: <strong>${variant.arg_id}</strong></span>
+                <span class="meta-item">Reviewer: <strong>${variant.reviewer_id}</strong></span>
+            </div>
+        </div>`;
+    }
+
+    // Show a short preview first, then let the user expand the full summary
+    const shortText = summaryText.substring(0, 340).replace(/\n/g, '<br>');
+    const fullText = summaryText.replace(/\n/g, '<br>');
 
     return `
     <div class="summary-card summary-card--${type}">
         <div class="card-label">${typeLabel}</div>
 
         <div class="scores-row">
-            ${scoreBlock('Sentiment', variant.success_score, 'sentiment')}
-            ${scoreBlock('Accuracy',  variant.accuracy_score,  'scale2')}
-            ${scoreBlock('Brevity',   variant.brevity_score,   'scale2')}
+            ${scoreBlock('Sentiment', variant.sentiment, 'sentiment')}
+            ${scoreBlock('Accuracy', variant.accuracy, 'scale2')}
+            ${scoreBlock('Brevity', variant.brevity, 'scale2')}
         </div>
 
         <div class="summary-text-box">
@@ -168,16 +290,31 @@ function summaryCard(variant, type) {
 }
 
 // ── Score block ────────────────────────────────────────────────────────────────
+/**
+ * Build one score block for sentiment, accuracy, or brevity.
+ *
+ * This creates the label, the text display, and the visual bar used in each
+ * summary card.
+ */
 function scoreBlock(label, value, kind) {
-    let level, display;
+    let level, display, width;
 
     if (kind === 'sentiment') {
-        level   = value === 1 ? 'high' : 'low';
-        display = value === 1 ? 'Positive (1)' : 'Negative (0)';
+        level = value === 1 ? 'high' : 'low';
+        display = value === 1 ? 'Correct (1)' : 'Incorrect (0)';
+        width = value * 100;
     } else {
-        // scale2: 1 = lower, 2 = higher
-        level   = value === 2 ? 'high' : 'medium';
-        display = value === 2 ? 'High (2)' : 'Low (1)';
+        if (value === 2) {
+            level = 'high';
+            display = 'High (2)';
+        } else if (value === 1) {
+            level = 'medium';
+            display = 'Medium (1)';
+        } else {
+            level = 'low';
+            display = 'Low (0)';
+        }
+        width = (value / 2) * 100;
     }
 
     return `
@@ -185,21 +322,36 @@ function scoreBlock(label, value, kind) {
         <span class="score-label">${label}</span>
         <span class="score-value">${display}</span>
         <div class="score-bar">
-            <div class="score-fill" style="width:${kind === 'sentiment' ? value * 100 : (value / 2) * 100}%"></div>
+            <div class="score-fill" style="width:${width}%"></div>
         </div>
     </div>`;
 }
 
 // ── UI helpers ─────────────────────────────────────────────────────────────────
+/**
+ * Visually show or hide a loading state for the results list.
+ *
+ * This does not remove the content. It just fades it while a request is running.
+ */
 function setResultsLoading(on) {
     document.getElementById('results-container').style.opacity = on ? '0.4' : '1';
 }
 
+/**
+ * Show an error message in the results area.
+ *
+ * This is used when the page cannot connect to the back end or when a search fails.
+ */
 function showResultsError(msg) {
     document.getElementById('results-container').innerHTML =
         `<div class="empty-state"><p class="error-msg">${msg}</p></div>`;
 }
 
+/**
+ * Delay repeated function calls until the user pauses.
+ *
+ * This helps avoid sending lots of search requests while the user is still typing.
+ */
 function debounce(fn, ms) {
     let t;
     return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
