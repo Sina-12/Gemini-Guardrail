@@ -7,9 +7,6 @@
 
 ## How to run the app
 
-NOTE: Depending on the architecture of your computer, it's very possible the following commands won't work for you (most likely machines using standard Intel or AMD x86_64/amd64 architecture without emulation support).  To get around this issue, please see the troubleshooting section below.
-
-
 ### 1  Load the Docker image
 
 Open a terminal in the folder containing `argument-summaries-app.tar` AND make sure the docker application is open while running the commands:
@@ -33,19 +30,6 @@ http://localhost:8000
 
     In the terminal where the container is running, press Ctrl + C.
 
-
-### Troubleshooting:
-
-If Docker gives an error because the image was built for a different CPU architecture than your machine, run the following command once to enable emulation support:
-
-```bash
-docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-```
-
-Then try running the app again:
-```bash
-docker run --rm -p 8000:8000 argument-summaries-app
-```
 
 ### What peer reviewers should test:
 
