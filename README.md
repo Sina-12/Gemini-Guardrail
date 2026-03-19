@@ -3,39 +3,41 @@ Project for COLX 523, for analysis of LLM summaries of r/ChangeMyView debates/ar
 
 For sprint-specific READMEs, see docs/. 
 
-## How to run the corpus collection proof of concept
+## How to run the corpus
 
 ### 1. Clone the repository
 
-git clone <REPO_URL>  
-cd <REPO_NAME>
+`git clone <REPO_URL> `
+`cd <REPO_NAME>`
 
-### 2. Install the required package
+Then, navigate to the /src folder.
 
-pip install requests
+### 2. Install the required packages
 
-### 3. Run the script
+`pip install uvicorn fastapi`
 
-python src/download_reddit_doc.py
+### 3. Run and open the server
 
-### 4. Expected output
+`uvicorn backend:app --reload`
 
-After the script runs, you should see:
+Then, navigate to http://127.0.0.1:8000 in a browser tab.
 
-Downloaded one document to data/raw/reddit_comment.json
+For specific technical documentation of the frontend, see `docs/frontend_explanation.md`.
 
-The file will be saved at:
+### 4. Stopping the server
 
-data/raw/reddit_comment.json
-
+Press Ctrl+C in the command window used to run the program and close the browser tab.
 
 ## Repository structure
 
 This repository is organized to separate source code, data, and documentation for each sprint.
 
 ### `src/`
-Contains all Python scripts used for data collection and processing.
+Contains all Python scripts used for running the corpus, as well as the ones used for data collection and processing.
 
+- `frontend.js` - the frontend (page) code.
+- `backend.py` - the backend (corpus accessing) code.
+- `index.html` - the base HTML for parsing the corpus.
 - `corpus_preprocess.py` - obtains data from ConvoKit and processes it into a format ready to be fed into an LLM to summarize.
 - `scraper.py` - scrapes r/ChangeMyView for the latest 100 posts and formats them like the processed ConvoKit data.
 - `calculate_agreement.py` - calculates interannotater agreement across entries that have multiple annotators.
