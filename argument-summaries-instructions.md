@@ -9,7 +9,7 @@
 
 ### 1  Load the Docker image
 
-Open a terminal in the folder containing `argument-summaries-app.tar` and run:
+Open a terminal in the folder containing `argument-summaries-app.tar` AND make sure the docker application is open while running the commands:
 
 ```bash
 docker load -i argument-summaries-app.tar
