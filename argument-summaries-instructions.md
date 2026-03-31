@@ -9,7 +9,7 @@
 
 ### 1  Load the Docker image
 
-Open a terminal in the folder containing `argument-summaries-app.tar` and run:
+Open a terminal in the folder containing `argument-summaries-app.tar` AND make sure the docker application is open while running the commands:
 
 ```bash
 docker load -i argument-summaries-app.tar
@@ -29,7 +29,6 @@ http://localhost:8000
 - How to stop the app:
 
     In the terminal where the container is running, press Ctrl + C.
-
 
 
 ### What peer reviewers should test:
@@ -59,7 +58,6 @@ Please try the following when testing the interface:
 7. Expand the full summary text and confirm that the full summary content is displayed.
 
 8. Try a few different threads to make sure the interface updates correctly each time.
-
 
 
 ### Expected behavior
