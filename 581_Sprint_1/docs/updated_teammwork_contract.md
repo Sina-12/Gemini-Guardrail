@@ -36,6 +36,7 @@ At the end of Monday meetings scrum leader writes down minutes
 **Will you use daily "stand-ups", or submit written summaries of your contributions, or something else?**
 
 We will submit written summaries of our contributions (as we make progress) and could adjust to daily stand ups during critical periods.
+[581 Update] Since members work asynchronously, we have pivoted to informing each other of progress through informal written updates on slack.
 
 **What is the quality of work each team member expects from themselves and each other?**
 
