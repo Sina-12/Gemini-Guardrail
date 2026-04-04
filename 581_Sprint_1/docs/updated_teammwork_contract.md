@@ -52,6 +52,10 @@ No such limitation for anyone as of now.
 - Fourth week Sina
 - Five week Gilly
 
+
+[581 Update] We realized after the experience of previous block that it is more efficient to use a hybrid system for scrum master/ Having just one person for taking the lead takes away responsibility from others, and we found that if we all have authority and leadership over our contribution, the project flows better. So going forward, we have a mix of scrum leader for each week, depending on the distribution of the work in that week's meeting. We will still select one person as the leader, but it is expected from others to continue taking leadership. 
+
+
 **Is there any behaviour you wish to highlight as being expected or unacceptable (i.e., what is the code of conduct for the group?)**
 
 - respond promptly
