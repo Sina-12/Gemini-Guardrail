@@ -17,6 +17,8 @@ We plan on creating a light version of scrum. On Mondays during lunch break, we 
 - Tuesday 2 - 5 hour block.
 - Friday evenings so we have time to review and finalize everything
 
+[581 Update] We realized that due to our individual schedules and perferences for when to work, it's better to split up work hours into "shifts". That is, those of us who can and like to complete work earlier in the week will participate in earlier scheduled blocks, and vice versa for those of us who are unavailable earlier in the week or like to work later. Additionally, due to scope creep and underestimation of work requirements, we now also have a few-hour block on Saturday evenings for the actual wrap-ups and quality checking for each week's sprint.
+
 **How often will group meetings occur?**
 
 At least two times during the week, plus meetings with stakeholders, as well as extra standups and additional meetings if needed.
@@ -54,7 +56,7 @@ No such limitation for anyone as of now.
 - Five week Gilly
 
 
-[581 Update] We realized after the experience of previous block that it is more efficient to use a hybrid system for scrum master/ Having just one person for taking the lead takes away responsibility from others, and we found that if we all have authority and leadership over our contribution, the project flows better. So going forward, we have a mix of scrum leader for each week, depending on the distribution of the work in that week's meeting. We will still select one person as the leader, but it is expected from others to continue taking leadership. 
+[581 Update] We realized after the experience of previous block that it is more efficient to use a hybrid system for scrum master/ Having just one person for taking the lead takes away responsibility from others, and we found that if we all have authority and leadership over our contribution, the project flows better. So going forward, we have a mix of scrum leader for each week, depending on the distribution of the work in that week's meeting. We will still select one person as the leader, but it is expected from others to continue taking leadership. Divvying up some of the responsibility assigned to the scrum leader also made sense: for example, the person who completes the last pull request is already in a spot to mark that sprint as complete, so they would be the one to do it instead.
 
 
 **Is there any behaviour you wish to highlight as being expected or unacceptable (i.e., what is the code of conduct for the group?)**
@@ -62,10 +64,13 @@ No such limitation for anyone as of now.
 - respond promptly
 - if you dont manage task let people know ahead of time
 
+
 **How do you do code review? Do you pair up, and always review the same person's code, or do you rotate weekly?**
 
 - in our meeting we can do it collaboratively
 - we will assign code review as a task and whoever is free or best suited for code review based on their skills and experience can conduct it.
+
+[581 Update] Turns out, it seems that "whoever is free" is a more efficient way of delegating code review work, as the times where we had code review assigned resulted in some bugs not being caught and merged into the main branch. Going forward, we are defaulting to "whoever is free at a given time", ensuring that they can do actual quality control and not panicked merges near the deadline.
 
 **And any other similar things that govern your working relationships.**
 
