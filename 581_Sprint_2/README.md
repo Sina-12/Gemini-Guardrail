@@ -68,6 +68,24 @@ focuses on ensembling and transfer learning.
 - `data/rnn_transfer_predictions.csv`
   - saved dev predictions from the neural transfer model
 
+## Dependencies
+
+These scripts should work across operating systems because they use relative
+paths through `pathlib`, but they still depend on a standard Python NLP / ML
+stack being installed.
+
+Required packages:
+
+- `pandas`
+- `numpy`
+- `scikit-learn`
+- `scipy`
+- `gensim`
+
+The transfer-learning scripts also need to download the pretrained
+`glove-wiki-gigaword-50` embeddings the first time they are run, unless those
+embeddings are already cached locally.
+
 ## How To Run The Ensemble
 
 From the repository root:
