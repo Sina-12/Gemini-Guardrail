@@ -34,16 +34,13 @@ def load_split(path):
     return df
 
 
-def main():
+def build_model():
     """
-    Train and evaluate the traditional Sprint 1 baseline.
+    Build the traditional baseline model used in Sprint 1 and Sprint 2.
 
     @param None: This function does not take any parameters.
-    @return: None. The function prints dev metrics and writes predictions.
+    @return: An unfitted sklearn Pipeline.
     """
-    train_df = load_split(TRAIN_PATH)
-    dev_df = load_split(DEV_PATH)
-
     # A standard sparse text baseline: TF-IDF features followed by a linear
     # classifier. This is a strong and interpretable first model for small text
     # datasets like ours.
@@ -69,6 +66,20 @@ def main():
             ),
         ]
     )
+    return model
+
+
+def main():
+    """
+    Train and evaluate the traditional Sprint 1 baseline.
+
+    @param None: This function does not take any parameters.
+    @return: None. The function prints dev metrics and writes predictions.
+    """
+    train_df = load_split(TRAIN_PATH)
+    dev_df = load_split(DEV_PATH)
+
+    model = build_model()
 
     # We only evaluate on the dev set for Sprint 1 so the test set stays clean.
     model.fit(train_df["model_text"], train_df[TARGET])
@@ -78,7 +89,7 @@ def main():
     macro_f1 = f1_score(dev_df[TARGET], dev_pred, average="macro")
 
     print("Traditional baseline: TF-IDF + Logistic Regression")
-    print(f"Target label: {TARGET}")
+    print(f"Target annotation label: {TARGET}")
     print(f"Dev accuracy: {acc:.3f}")
     print(f"Dev macro F1: {macro_f1:.3f}")
     print("\nPer-class results:")

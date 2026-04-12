@@ -13,11 +13,9 @@ This folder contains both parts of Sprint 2:
 
 Here, `accuracy` refers to the human annotation label for summary quality, not the model evaluation metric.
 
-We copied the Sprint 1 baselines into this sprint folder so we could:
-
-- leave the Sprint 1 files untouched
-- expose a shared `build_model()` interface for ensembling
-- keep the Sprint 2 model code organized in one place
+The original baseline models now live only in `581_Sprint_1/src/`. Sprint 2
+reuses those same files directly for ensembling, while the new Sprint 2 code
+focuses on ensembling and transfer learning.
 
 ## Folder Structure
 
@@ -32,8 +30,6 @@ We copied the Sprint 1 baselines into this sprint folder so we could:
     ensemble_notes.md
     transfer_notes.md
   src/
-    traditional_baseline.py
-    rnn_baseline.py
     ensemble.py
     embedding_utils.py
     traditional_transfer.py
@@ -51,14 +47,8 @@ We copied the Sprint 1 baselines into this sprint folder so we could:
 - `docs/transfer_notes.md`
   - short writeup for the transfer-learning part of Sprint 2
 
-- `src/traditional_baseline.py`
-  - copied Sprint 1 traditional baseline used as `B1`
-
-- `src/rnn_baseline.py`
-  - copied Sprint 1 neural baseline used as `B2`
-
 - `src/ensemble.py`
-  - runs the Sprint 2 ensemble setup and reports the `E1` result
+  - runs the Sprint 2 ensemble setup and reports the `E1` result using the Sprint 1 baseline scripts
 
 - `src/embedding_utils.py`
   - shared helper file for loading GloVe embeddings and building transfer features
@@ -88,7 +78,7 @@ python 581_Sprint_2/src/ensemble.py
 
 The Sprint 2 scripts read the train and dev splits from `581_Sprint_1/data/` and save new Sprint 2 prediction files into `581_Sprint_2/data/`.
 
-Running `ensemble.py` also fits the two baseline models again as part of the ensemble pipeline, so the Sprint 2 prediction CSV files are regenerated from the code rather than being treated as fixed manual outputs.
+Running `ensemble.py` also fits the two Sprint 1 baseline models again as part of the ensemble pipeline and writes the current ensemble predictions to `581_Sprint_2/data/ensemble_predictions.csv`.
 
 Transfer-learning models:
 

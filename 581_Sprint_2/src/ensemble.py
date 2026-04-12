@@ -1,21 +1,21 @@
 """
 Ensemble the original Sprint 1 baselines for Sprint 2.
 
-This script fits the copied baseline models on the Sprint 1 train split and
+This script fits the original Sprint 1 baseline models on the Sprint 1 train split and
 combines their dev-set predicted probabilities in two ways:
 
 1. Equal-weight soft voting
 2. A small manual weight search for two-model ensembles
 
-By default it ensembles:
-- traditional_baseline.py
-- rnn_baseline.py
+By default it ensembles the Sprint 1 baseline scripts:
+- 581_Sprint_1/src/traditional_baseline.py
+- 581_Sprint_1/src/rnn_baseline.py
 
 It can also test every subset combination of the provided models.
 
 In other words, this file is responsible for the E1 part of Sprint 2: taking
-the two original baselines, combining their outputs, and reporting the best
-ensemble result on the dev split.
+the two original Sprint 1 baselines, combining their outputs, and reporting
+the best ensemble result on the dev split.
 """
 
 import argparse
@@ -37,8 +37,8 @@ DEV_PATH = SPRINT1_DATA_DIR / "dev.csv"
 OUT_PATH = DATA_DIR / "ensemble_predictions.csv"
 TARGET = "accuracy"
 DEFAULT_SCRIPTS = [
-    SRC_DIR / "traditional_baseline.py",
-    SRC_DIR / "rnn_baseline.py",
+    SPRINT_DIR.parent / "581_Sprint_1" / "src" / "traditional_baseline.py",
+    SPRINT_DIR.parent / "581_Sprint_1" / "src" / "rnn_baseline.py",
 ]
 
 
@@ -216,7 +216,7 @@ def main():
     parser.add_argument(
         "scripts",
         nargs="*",
-        help="Optional model scripts exposing build_model(); defaults to the two Sprint 1 baselines copied into Sprint 2.",
+        help="Optional model scripts exposing build_model(); defaults to the two Sprint 1 baseline scripts.",
     )
     parser.add_argument(
         "--combinations",
