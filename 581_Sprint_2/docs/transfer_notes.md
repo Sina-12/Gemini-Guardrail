@@ -47,3 +47,5 @@ For the neural model, we reduced the TF-IDF features with SVD, appended the pret
 The transferred signal helped the traditional model on macro F1, even though its raw accuracy dropped slightly. That suggests the added embeddings helped it handle the class imbalance a bit better.
 
 For the neural model, the transferred signal did not change the result much. Even without an improvement, we still think the choice is reasonable because it adds a meaningful pretrained semantic representation and gives us a clear comparison point for Sprint 2.
+
+The zero precision and recall scores for some classes are not a bug in the code. They happen because the data is imbalanced and the weaker models tend to overpredict the majority class instead of correctly picking up the rare classes.
