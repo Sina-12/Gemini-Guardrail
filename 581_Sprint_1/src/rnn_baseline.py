@@ -35,16 +35,13 @@ def load_split(path):
     return df
 
 
-def main():
+def build_model():
     """
-    Train and evaluate the simple neural Sprint 1 baseline.
+    Build the simple neural baseline model used in Sprint 1 and Sprint 2.
 
     @param None: This function does not take any parameters.
-    @return: None. The function prints dev metrics and writes predictions.
+    @return: An unfitted sklearn Pipeline.
     """
-    train_df = load_split(TRAIN_PATH)
-    dev_df = load_split(DEV_PATH)
-
     # This is our simple neural baseline. We keep the same TF-IDF text
     # representation, compress it with SVD, and then train a small MLP.
     model = Pipeline(
@@ -71,6 +68,20 @@ def main():
             ),
         ]
     )
+    return model
+
+
+def main():
+    """
+    Train and evaluate the simple neural Sprint 1 baseline.
+
+    @param None: This function does not take any parameters.
+    @return: None. The function prints dev metrics and writes predictions.
+    """
+    train_df = load_split(TRAIN_PATH)
+    dev_df = load_split(DEV_PATH)
+
+    model = build_model()
 
     # We keep the evaluation on dev only so the held-out test set is untouched.
     model.fit(train_df["model_text"], train_df[TARGET])
@@ -80,7 +91,7 @@ def main():
     macro_f1 = f1_score(dev_df[TARGET], dev_pred, average="macro")
 
     print("Neural baseline: TF-IDF + TruncatedSVD + MLP")
-    print(f"Target label: {TARGET}")
+    print(f"Target annotation label: {TARGET}")
     print(f"Dev accuracy: {acc:.3f}")
     print(f"Dev macro F1: {macro_f1:.3f}")
     print("\nPer-class results:")
