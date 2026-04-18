@@ -1,0 +1,330 @@
+\documentclass[11pt,twocolumn]{article}
+\usepackage[margin=0.85in,columnsep=0.25in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{multirow}
+
+\title{\textbf{581 Report --- Auditing LLM Summaries:\\Sprint 3 Multi-Task Learning}}
+
+\author{Jai Sharma \and Gilly Guo \and Rayan Jaz \and Sina Oloomi\\[0.5em]
+\small University of British Columbia}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Abstract}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Sprint 3 extends the Sprint 2 transfer learning pipeline by introducing a
+multi-task learning (MTL) objective. Instead of predicting only the
+\texttt{accuracy} label, models now jointly predict \texttt{accuracy} and
+\texttt{brevity} as a single combined label. We evaluate a traditional
+(Logistic Regression) and neural (MLP) MTL model, then compare several
+ensemble rules that combine Sprint 2 and Sprint 3 predictions. The Sprint 3
+traditional MTL achieves the best pure Macro F1 of 0.421, outperforming the
+Sprint 2 weighted ensemble (0.372), primarily by recovering recall on the
+minority class 1. A confidence-gated hybrid of Sprint 2 and Sprint 3
+predictions offers the best overall balance, reaching 0.750 accuracy and 0.415
+Macro F1.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Sprint 1 established TF-IDF baselines and Sprint 2 introduced GloVe transfer
+learning and soft-voting ensembles. A persistent challenge across both sprints
+was severe class imbalance, which caused models to over-predict class 2 with
+near-zero recall on classes 0 and 1. Sprint 3 addresses this by leveraging the
+\texttt{brevity} annotation as an auxiliary signal, with the hypothesis that
+brevity and accuracy are correlated and that jointly modeling both may improve
+minority class recovery.
+
+Multi-task learning is a natural fit for this problem. Both labels are human
+annotations over the same summaries, so the model can share representations
+while simultaneously learning to distinguish multiple aspects of summary
+quality. Rather than modifying the input features as in Sprint 2, Sprint 3
+changes the prediction objective itself, allowing the auxiliary task to act as
+a regularizer on the primary task.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Data}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The same 400-entry CMV corpus and 320/40/40 train/dev/test split from Sprint 1
+is used in this sprint, partitioned by thread and stratified by reviewer to
+prevent data leakage. No new data was collected. The key change is that both
+the \texttt{accuracy} (0--2) and \texttt{brevity} (0--2) annotation labels are
+now used during training, with \texttt{accuracy} remaining the primary
+evaluation target and \texttt{brevity} serving as the auxiliary task.
+
+\subsection{Auxiliary Task Selection}
+
+\texttt{brevity} was chosen as the auxiliary task over \texttt{sentiment} for
+two reasons. First, \texttt{brevity} has a healthier class spread than
+\texttt{sentiment}, which is heavily imbalanced, producing a more complete
+joint label space. Second, in a direct comparison, \texttt{accuracy} +
+\texttt{brevity} gave a better Macro F1 than \texttt{accuracy} +
+\texttt{sentiment} on the traditional multi-task setup. The intuition is that a
+summary capturing most key points concisely is often also more accurate, meaning
+brevity provides a complementary signal about overall summary quality that is
+closely related to the primary task.
+
+\subsection{Joint Label Construction}
+
+Labels from both tasks are combined into a single string of the form
+\texttt{acc\_\{accuracy\}\_\_brev\_\{brevity\}} (e.g.\ \texttt{acc\_2\_\_brev\_1}),
+producing a set of joint classes that the model predicts as a single multi-class
+problem. After prediction, the joint label is decoded back into separate
+\texttt{accuracy} and \texttt{brevity} predictions for evaluation. A
+\texttt{LabelEncoder} is fit on the training joint labels and applied
+consistently to the dev set.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Methodology}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Feature Representation}
+
+Feature construction is identical to Sprint 2. The source text and summary are
+concatenated as \texttt{SOURCE: ...\textbackslash nSUMMARY: ...} to form a
+unified input. TF-IDF features are extracted using unigrams and bigrams, with
+English stop words removed, a minimum document frequency of 2, and a vocabulary
+capped at the top 5,000 features. GloVe embeddings
+(\texttt{glove-wiki-gigaword-50}) are used to generate separate mean embeddings
+for the source and summary, which are then concatenated to form a 100-dimensional
+dense representation.
+
+\subsection{Traditional MTL Model}
+
+The traditional MTL model horizontally stacks the sparse TF-IDF features and
+the dense GloVe features, then trains a Logistic Regression classifier on the
+joint labels with \texttt{max\_iter=2000}, \texttt{C=2.0}, and balanced class
+weights. After inference, the joint predictions are decoded and the
+\texttt{accuracy} component is extracted for evaluation against the gold labels.
+
+\subsection{Neural MTL Model}
+
+The neural MTL model reduces the TF-IDF features to 50 components via
+Truncated SVD, down from 100 in Sprint 2, and concatenates the result with the
+GloVe features before passing them to a single hidden layer MLP with 64 neurons,
+\texttt{max\_iter=500}, and early stopping enabled. The same joint label
+training and decoding procedure is used as in the traditional model.
+
+\subsection{Ensemble Experiments}
+
+Six combination rules are evaluated using saved dev predictions from the Sprint
+2 weighted ensemble and the Sprint 3 traditional MTL model. The Sprint 2 and
+Sprint 3 predictions are used as individual baselines. The min-label rule takes
+the lower of the two predictions. The brevity-gate rule uses the Sprint 3
+prediction only when predicted brevity is low ($\leq$1) and falls back to
+Sprint 2 otherwise. The confidence-gate rule uses Sprint 3 when its joint-label
+probability margin exceeds 0.329 and falls back to Sprint 2 otherwise. Finally,
+a three-model majority vote adds the Sprint 1 traditional baseline as a third
+voter, with ties broken by taking the lower label. The best rule is selected by
+Macro F1 with accuracy as a tiebreaker.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Results}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Full Model Comparison Across Sprints}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Acc.} & \textbf{F1} \\
+\midrule
+S1 traditional baseline   & 0.650 & 0.336 \\
+S2 traditional transfer   & 0.625 & 0.366 \\
+S2 weighted ensemble      & 0.725 & 0.372 \\
+Neural MTL (MLP)          & 0.700 & 0.275 \\
+Traditional MTL (LogReg)  & 0.700 & \textbf{0.421} \\
+Confidence-gated (S2+S3)  & \textbf{0.750} & 0.415 \\
+\bottomrule
+\end{tabular}
+\caption{Dev performance across all sprints.}
+\end{table}
+
+\subsection{Ensemble Rule Breakdown}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Rule} & \textbf{Acc.} & \textbf{F1} \\
+\midrule
+Sprint 2 only             & 0.725 & 0.372 \\
+Sprint 3 only             & 0.700 & 0.421 \\
+Min-label                 & 0.700 & 0.421 \\
+Brevity-gate              & 0.700 & 0.384 \\
+Confidence-gate           & 0.725 & 0.372 \\
+Majority vote (3 models)  & 0.675 & 0.348 \\
+\bottomrule
+\end{tabular}
+\caption{Ensemble rules on the Sprint 3 dev set.}
+\end{table}
+
+\subsection{Per-class Breakdown}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Model} & \textbf{Cl.} & \textbf{P} & \textbf{R} & \textbf{F1} \\
+\midrule
+\multirow{3}{*}{Trad. MTL}
+  & 0 & 0.000 & 0.000 & 0.000 \\
+  & 1 & 0.455 & 0.455 & 0.455 \\
+  & 2 & 0.793 & 0.821 & 0.807 \\
+\midrule
+\multirow{3}{*}{Neural MTL}
+  & 0 & 0.000 & 0.000 & 0.000 \\
+  & 1 & 0.000 & 0.000 & 0.000 \\
+  & 2 & 0.700 & 1.000 & 0.824 \\
+\bottomrule
+\end{tabular}
+\caption{Per-class precision (P), recall (R), and F1 for both MTL models.}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Analysis and Discussion}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Multi-task Learning Improves Minority Class Recall}
+
+The traditional MTL model raises class 1 F1 from approximately 0.286 in the
+Sprint 2 ensemble to 0.455, driven by the regularizing effect of the brevity
+auxiliary signal. The joint label forces the model to distinguish more
+fine-grained combinations of accuracy and brevity, which indirectly discourages
+over-prediction of the majority class. The overall effect resembles
+regularization rather than a fundamental behavioural change: the model becomes
+less overconfident about class 2, which helps on borderline class 1 examples
+while still correctly retaining most class 2 predictions.
+
+\subsection{Neural MTL Collapses to Class 2}
+
+The MLP model predicts class 2 for every example, producing a degenerate Macro
+F1 of 0.275. This is consistent with the neural model's behaviour in Sprint 1
+and Sprint 2. The most likely causes are the smaller feature space from reducing
+SVD components to 50, higher model capacity relative to dataset size, and the
+imbalanced joint label distribution overwhelming the minority signal. The
+multi-task objective does not help the neural model break out of the
+majority-class pattern the way it does for the linear model.
+
+\subsection{Ensemble Results and the Confidence-Gated Hybrid}
+
+No simple ensemble rule outperforms the Sprint 3 traditional MTL on Macro F1
+alone. However, the confidence-gate rule produces the best overall balance,
+reaching 0.750 accuracy and 0.415 Macro F1 by using the Sprint 3 prediction
+when the model's joint-label probability margin is high and falling back to the
+Sprint 2 ensemble otherwise. This is the highest accuracy result across all
+three sprints and still outperforms the Sprint 2 weighted ensemble on Macro F1,
+making it the most well-rounded combined model. The three-model majority vote
+performs worst overall, suggesting the Sprint 1 baseline adds noise rather than
+a useful third signal.
+
+\subsection{Qualitative Error Analysis}
+
+Comparing the Sprint 1 traditional baseline against the Sprint 3 traditional
+MTL on dev predictions reveals a clear pattern in both the fixed and broken
+cases \cite{claude_analysis}. Among the fixed examples, \texttt{152\_u} and
+\texttt{159\_u} were cases where the baseline over-predicted class 2 and the
+MTL model correctly moved predictions down to class 1. Both summaries are fairly
+complete but not clearly strong enough for the top accuracy label, suggesting
+the brevity signal is acting as a regularizer. A third fixed example,
+\texttt{45\_s}, shows the opposite direction: the baseline under-predicted at
+class 1 while the MTL model correctly moved it up to class 2, demonstrating
+that the joint label can also support upward corrections on summaries that are
+both accurate and complete.
+
+Among the broken examples, \texttt{159\_s} and \texttt{184\_u} were cases where
+the baseline correctly predicted class 2 but the MTL model dropped predictions
+to class 1. The model's increased caution, while beneficial overall, leads to
+underprediction on summaries that are genuinely strong. The brevity signal may
+have pulled the joint prediction toward a lower accuracy class in these cases.
+
+\subsection{Class 0 Remains Undetected}
+
+No model across any sprint has successfully predicted class 0. This reflects
+both the extreme rarity of class 0 examples in the training set and the
+inherent difficulty of distinguishing ``not accurate'' summaries from
+``moderately accurate'' ones using surface-level lexical and embedding features
+alone.
+
+\subsection{Data Limitations and Noise}
+
+The dataset is small and the \texttt{accuracy} label is imbalanced, which
+places a hard ceiling on how much any model can realistically improve. The
+annotations are subjective, reflecting human judgments of summary quality rather
+than objective ground truth. Furthermore, the prediction target is itself a
+rating of LLM-generated summaries, adding an additional layer of noise on top
+of already messy natural language data. Some instability across models and
+limited absolute gains are therefore expected consequences of the low-resource
+noisy setup rather than indicators of poor modeling.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Sprint 3 demonstrates that multi-task learning with \texttt{brevity} as an
+auxiliary task meaningfully improves accuracy classification, particularly for
+the difficult class 1. The traditional MTL model, with a Macro F1 of 0.421, is
+the best single model across all three sprints. The confidence-gated hybrid, at
+0.750 accuracy and 0.415 Macro F1, is the best balanced combined result and the
+strongest overall model when both metrics are considered together.
+
+Ensemble combinations of Sprint 2 and Sprint 3 models offer limited gains over
+the MTL model alone, suggesting that the MTL objective is itself the more
+effective integration strategy compared to post-hoc rule-based combination.
+Class 0 prediction remains an open problem that will likely require more data,
+oversampling, or a fundamentally different modeling approach. Future work could
+explore sentence-level embeddings such as SBERT, explicit class-rebalancing via
+SMOTE, or fine-tuning a small pretrained encoder directly on the annotation
+task.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{thebibliography}{9}
+
+\bibitem{chatgpt}
+ChatGPT.
+Response to ``Help brainstorm, debug, and revise project code and documentation
+for this project.''
+OpenAI, 18 Apr.\ 2026.
+\url{https://chat.openai.com/}.
+
+\bibitem{claude_analysis}
+Claude Sonnet 4.6.
+Response to ``Run the project scripts and compare the output metrics and model
+behaviour against the notes I have taken. Identify if any information is 
+missing between the documented results and what the scripts actually
+produce.''
+Anthropic, 18 Apr.\ 2026.
+\url{https://claude.ai/code}.
+
+\bibitem{claude_structure}
+Claude Sonnet 4.6.
+Response to ``Organise the following bullet points byfollowing the section 
+headings and academic layout of the provided scientific report.''
+Anthropic, 18 Apr.\ 2026.
+\url{https://claude.ai/code}.
+
+\bibitem{claude_writing}
+Claude Sonnet 4.6.
+Response to ``This is a draft of a scientific paper. identify where the writing
+style is inappropriate for a scientific paper, and suggest corrections.''
+Anthropic, 18 Apr.\ 2026.
+\url{https://claude.ai/code}.
+
+\end{thebibliography}
+
+\end{document}
