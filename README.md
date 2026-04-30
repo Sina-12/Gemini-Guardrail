@@ -1,9 +1,3 @@
-# argument-summaries
-
-Project for COLX 523 focused on summary quality analysis for r/ChangeMyView arguments, with a dynamic guardrail pipeline for claim-level hallucination detection and repair.
-
-For sprint-specific documentation, see `docs/`.
-
 ## Dynamic summary workflow (Phase 1)
 
 The Phase 1 guardrail is a stateful audit-and-rewrite loop that starts from the dataset summary and selectively repairs unsupported claims:
@@ -95,6 +89,7 @@ docker run --rm -p 8000:8000 gemini-guardrail
 ```
 
 Notes:
+- The docker process will take about 5 minutes to install. 
 - The container defaults `OLLAMA_BASE_URL` to `http://host.docker.internal:11434/v1`.
 - Ensure Ollama is running on your host and both models are pulled (`phi4-mini`, `phi4-mini-reasoning`).
 - If needed, override the endpoint:
