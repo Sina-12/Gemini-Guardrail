@@ -1,4 +1,0 @@
-
-##Rules for general approach to the project and interaction with the repo
-
-"Forget the classification-based approach from Sprint 3. We are moving away from predicting human scores via vectorization. Focus entirely on the Agentic Guardrail logic in guardrail_phase1.py. Use Gemini 3.0 (or a api you can call with no cost but still is a solid modern llm) as the SummaryGenerator and implement a multi-agent check where the Forensic Auditor uses NLI (Natural Language Inference) to verify every atomic claim. The 400 human annotations should only be used as a test suite to verify if our Auditor matches human judgment."
