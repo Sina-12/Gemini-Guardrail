@@ -1,68 +1,119 @@
 # argument-summaries
-Project for COLX 523, for analysis of LLM summaries of r/ChangeMyView debates/arguments.
 
-For sprint-specific READMEs, see docs/. 
+Project for COLX 523 focused on summary quality analysis for r/ChangeMyView arguments, with a dynamic guardrail pipeline for claim-level hallucination detection and repair.
 
-## How to run the corpus
+For sprint-specific documentation, see `docs/`.
 
-### 1. Clone the repository
+## Dynamic summary workflow (Phase 1)
 
-`git clone <REPO_URL> `
-`cd <REPO_NAME>`
+The Phase 1 guardrail is a stateful audit-and-rewrite loop that starts from the dataset summary and selectively repairs unsupported claims:
 
-Then, navigate to the /src folder.
+1. **Input**: source thread text + prepared summary.
+2. **Claim decomposition**: summary is split into atomic sentence-level claims.
+3. **Evidence retrieval**: top matching source sentences are found with semantic similarity.
+4. **NLI screening**: DeBERTa labels each claim (`entailment` / `neutral` / `contradiction`).
+5. **Judge escalation**: low-confidence or contradictory claims are sent to the local Ollama judge (`phi4-mini-reasoning`).
+6. **Targeted rewrite**: only hallucinated sentences are rewritten (not the full summary) using `phi4-mini`.
+7. **Re-audit + trust update**: rewritten sentences are rechecked and a trust score/status is returned.
 
-### 2. Install the required packages
+The API returns the final summary plus audit artifacts (claim verdicts, evidence, directives, and backend metadata).
 
-`pip install uvicorn fastapi`
+## Run locally
 
-### 3. Run and open the server
+### 1) Clone and enter the repo
 
-`uvicorn backend:app --reload`
+```bash
+git clone <REPO_URL>
+cd <REPO_NAME>
+```
 
-Then, navigate to http://127.0.0.1:8000 in a browser tab.
+### 2) Install dependencies
 
-For specific technical documentation of the frontend, see `docs/frontend_explanation.md`.
+Recommended: create the project environment from `environment.yml`.
 
-### 4. Stopping the server
+```bash
+conda env create -f environment.yml
+conda activate arg_sum
+```
 
-Press Ctrl+C in the command window used to run the program and close the browser tab.
+### 3) Start Ollama and required models
+
+This project expects a local OpenAI-compatible Ollama endpoint at `http://localhost:11434/v1`.
+
+```bash
+ollama serve
+ollama pull phi4-mini
+ollama pull phi4-mini-reasoning
+```
+
+### 4) Start the backend
+
+Run from `src/`:
+
+```bash
+cd src
+uvicorn backend:app --reload
+```
+
+Open: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Guardrail API usage
+
+### HTTP endpoint
+
+`POST /guardrail/phase1`
+
+Example request:
+
+```json
+{
+  "source_text": "Original thread text...",
+  "summary": "Prepared summary to audit...",
+  "max_iters": 3,
+  "min_support_ratio": 0.8
+}
+```
+
+### WebSocket endpoint
+
+`GET /ws/guardrail/phase1`
+
+Send the same JSON payload as the HTTP endpoint to receive streaming progress events (`claim_scored`, `judge_result`, `new_sentence_rewritten`, `run_complete`, etc.).
+
+## Run with Docker
+
+Build:
+
+```bash
+docker build -t gemini-guardrail .
+```
+
+Run:
+
+```bash
+docker run --rm -p 8000:8000 gemini-guardrail
+```
+
+Notes:
+- The container defaults `OLLAMA_BASE_URL` to `http://host.docker.internal:11434/v1`.
+- Ensure Ollama is running on your host and both models are pulled (`phi4-mini`, `phi4-mini-reasoning`).
+- If needed, override the endpoint:
+
+```bash
+docker run --rm -p 8000:8000 -e OLLAMA_BASE_URL=http://host.docker.internal:11434/v1 gemini-guardrail
+```
 
 ## Repository structure
 
-This repository is organized to separate source code, data, and documentation for each sprint.
-
 ### `src/`
-Contains all Python scripts used for running the corpus, as well as the ones used for data collection and processing.
-
-- `frontend.js` - the frontend (page) code.
-- `backend.py` - the backend (corpus accessing) code.
-- `index.html` - the base HTML for parsing the corpus.
-- `corpus_preprocess.py` - obtains data from ConvoKit and processes it into a format ready to be fed into an LLM to summarize.
-- `scraper.py` - scrapes r/ChangeMyView for the latest 100 posts and formats them like the processed ConvoKit data.
-- `calculate_agreement.py` - calculates interannotater agreement across entries that have multiple annotators.
-- `download_reddit_doc.py` – proof-of-concept script that downloads one Reddit comment and saves it as a corpus document.
+- `backend.py` - FastAPI app, dataset endpoints, and guardrail endpoints.
+- `guardrail_phase1.py` - dynamic summary audit/rewrite orchestrator.
+- `frontend.js` - browser UI logic.
+- `index.html` - UI shell served at `/`.
+- `styles.css` - UI styling.
 
 ### `data/`
-Stores the raw corpus files.
-
-- `raw/` – original downloaded text data in JSON format.  
-  These files are not modified so the data collection step remains reproducible.
-- `interannotations/interannotations.csv` - data that was annotated by all group members, including each annotator's scores, discernable via reviewer_id.
+- corpus and annotation data used by backend endpoints.
 
 ### `docs/`
-Contains written deliverables for the project, as well as the annotated data, e.g.:
-
-- `teamwork_contract.md` – description of team workflow, responsibilities, and communication plan  
-- `project_proposal.md` – description of the corpus design and annotation plan  
-- `annotation_process.md` - retrospective on the annotation process
-- `plan_for_the_interface.md` - plan for the front-end interface of the project
-- `docs/0-43_Annotations.csv`
-- `docs/44-86_Annotations.csv`
-- `docs/87-129_Annotations.csv`
-- `docs/Scraped_Annotations.csv` - the various separate annotated files
-
-### Top-level files
-
-- `README.md` – overview of the project and instructions for running the code  
-- `LICENSE` – project license
+- sprint and project documentation.

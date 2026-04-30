@@ -1,15 +1,49 @@
 # Run in the src folder with: uvicorn backend:app --reload
 # Then paste 'http://127.0.0.1:8000' in browser
 
+import asyncio
 from pathlib import Path
+import queue
+import time
+from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+# Load project-root .env (one level above src/) before imports that read os.environ.
+try:
+    from dotenv import load_dotenv
+
+    _PROJECT_ROOT = Path(__file__).resolve().parents[1]
+    load_dotenv(dotenv_path=_PROJECT_ROOT / ".env", override=True)
+except ImportError:
+    pass
+
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from pydantic import BaseModel, Field
 import pandas as pd
+from guardrail_phase1 import GuardrailOrchestrator, create_guardrail_orchestrator
 
-app = FastAPI()
+_guardrail: GuardrailOrchestrator | None = None
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    """Load DeBERTa/semantic models before serving requests."""
+    global _guardrail
+    _guardrail = create_guardrail_orchestrator()
+    yield
+    _guardrail = None
+
+
+app = FastAPI(lifespan=lifespan)
+
+
+def get_guardrail() -> GuardrailOrchestrator:
+    global _guardrail
+    if _guardrail is None:
+        raise RuntimeError("Guardrail not initialized. Startup lifespan did not complete.")
+    return _guardrail
 
 # Allow the front end to talk to the back end from the browser
 app.add_middleware(
@@ -143,3 +177,106 @@ def get_thread(thread_num: int):
         result[row["variant"]] = row_to_dict(row)
 
     return result
+
+
+class GuardrailPhase1Request(BaseModel):
+    source_text: str = Field(..., min_length=1, description="Original source text to summarize.")
+    summary: str = Field(..., min_length=1, description="Precomputed summary from dataset.")
+    max_iters: int = Field(3, ge=1, le=8, description="Maximum repair loop iterations.")
+    min_support_ratio: float = Field(
+        0.8, ge=0.4, le=1.0, description="Minimum supported-claim ratio for acceptance."
+    )
+
+
+@app.post("/guardrail/phase1")
+def run_guardrail_phase1(payload: GuardrailPhase1Request):
+    """
+    Run Phase 1 dynamic guardrail loop.
+
+    Returns iterative audit artifacts:
+    - candidate summaries
+    - atomic claim verdicts
+    - correction directives
+    - evolving trust score
+    """
+    try:
+        result = get_guardrail().run(
+            source_text=payload.source_text,
+            prepared_summary=payload.summary,
+            max_iters=payload.max_iters,
+            min_support_ratio=payload.min_support_ratio,
+        )
+    except RuntimeError as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Guardrail pipeline failed: {exc}") from exc
+    return result
+
+
+@app.websocket("/ws/guardrail/phase1")
+async def run_guardrail_phase1_ws(websocket: WebSocket):
+    """
+    WebSocket streaming endpoint for live guardrail progress events.
+
+    Client flow:
+    1) Connect websocket
+    2) Send JSON payload matching GuardrailPhase1Request
+    3) Receive event packets in real-time and final result packet
+    """
+    await websocket.accept()
+    try:
+        while True:
+            raw_payload = await websocket.receive_json()
+            try:
+                payload = GuardrailPhase1Request(**raw_payload)
+            except Exception as exc:
+                await websocket.send_json({"type": "error", "detail": f"Invalid payload: {exc}"})
+                continue
+
+            q: queue.Queue[dict] = queue.Queue()
+
+            def emit(event: dict):
+                q.put(event)
+
+            def run_job():
+                return get_guardrail().run_stream(
+                    source_text=payload.source_text,
+                    prepared_summary=payload.summary,
+                    max_iters=payload.max_iters,
+                    min_support_ratio=payload.min_support_ratio,
+                    emit=emit,
+                )
+
+            task = asyncio.create_task(asyncio.to_thread(run_job))
+
+            # Do not use blocking queue.get() on the event loop thread: it can delay
+            # heartbeats and starve other async work. Drain with get_nowait + sleep.
+            while True:
+                if task.done() and q.empty():
+                    break
+                drained_any = False
+                while True:
+                    try:
+                        event = q.get_nowait()
+                    except queue.Empty:
+                        break
+                    drained_any = True
+                    await websocket.send_json({"type": "event", "event": event})
+                if not drained_any:
+                    await websocket.send_json({"type": "heartbeat", "ts": time.time()})
+                    await asyncio.sleep(0.25)
+
+            try:
+                result = await task
+            except RuntimeError as exc:
+                await websocket.send_json({"type": "error", "detail": str(exc)})
+                continue
+            except Exception as exc:
+                await websocket.send_json(
+                    {"type": "error", "detail": f"Guardrail pipeline failed: {exc}"}
+                )
+                continue
+
+            await websocket.send_json({"type": "complete", "result": result})
+    except WebSocketDisconnect:
+        return

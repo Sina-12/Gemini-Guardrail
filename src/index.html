@@ -1,51 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CMV Summary Audit</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/static/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Guardrail | Forensic Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
-
-<!-- Header area with app title and subtitle -->
-<header>
-  <h1>CMV Summary Audit</h1>
-  <span class="subtitle">Change My View · Reddit Annotation Explorer</span>
-</header>
-
-<!-- Search controls -->
-<div class="search-bar">
-  <input type="text" id="search-input" placeholder="Filter by topic keyword — e.g. abortion, climate, tax…" />
-  <button id="search-btn">Search</button>
-  <span class="count-tag">Showing <span id="result-count">—</span></span>
-</div>
-
-<!-- Main app layout -->
-<div class="workspace">
-  <!-- Left side thread list -->
-  <div class="list-col">
-    <div class="col-header">Threads</div>
-    <div id="results-container">
-      <div class="empty-state"><p>Loading threads…</p></div>
-    </div>
-  </div>
-
-  <!-- Right side detail panel -->
-  <div class="detail-col">
-    <div id="detail-pane">
-      <div class="empty-state">
-        <div class="empty-icon">←</div>
-        <p>Select a thread from the list<br>to compare its successful and<br>unsuccessful summaries.</p>
+  <div class="app-shell">
+    <aside class="left-rail">
+      <div class="brand-block">
+        <p class="eyebrow">Geminni Guardrail</p>
+        <h1>Auditing Summaries</h1>
       </div>
-    </div>
-  </div>
-</div>
+      <div class="search-wrap">
+        <input id="search-input" type="text" placeholder="Search threads, claims, or evidence..." />
+        <button id="search-btn">Search</button>
+      </div>
+      <div class="thread-head">
+        <span>Argument Threads</span>
+        <span id="result-count">—</span>
+      </div>
+      <div id="results-container" class="thread-list">
+        <div class="empty-state">Loading threads...</div>
+      </div>
+    </aside>
 
-<!-- Front end logic is loaded from the JS file -->
-<script src="/static/frontend.js"></script>
+    <main class="main-stage">
+      <section id="detail-pane" class="analysis-stage">
+        <div class="empty-center">
+          <h2>Select a thread to start forensic auditing</h2>
+          <p>The source-to-summary heatmap, trust gauge, and activity stream will initialize here.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/frontend.js"></script>
 </body>
 </html>
