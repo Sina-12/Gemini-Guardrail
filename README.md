@@ -1,3 +1,18 @@
+## Gemini Guardrail 
+
+Assess the accuracy and tracibility of Gemini summaries. 
+
+What my auditor adds to a regular Gemini summary:
+- A mapped evidence chain: where users can click and see where each line of summary related to the source text.
+- A Test score assessing the accuracy of the summary.
+- Ensuring key points (not just most likely points) of an argument is captured in the summary. Assessing the Linguistics nuance of the text and whether there are subtle strategic drifts in the summary. 
+
+### Files to Navigate to understand the dynamic auditor:
+- Start here: src/backend.py, src/guardrail_phase1.py, src/frontend.js
+- API: POST /guardrail/phase1, websocket path
+- Tests: test_api.py 
+
+
 ## Dynamic summary workflow (Phase 1)
 
 The Phase 1 guardrail is a stateful audit-and-rewrite loop that starts from the dataset summary and selectively repairs unsupported claims:

@@ -421,6 +421,8 @@ class ForensicAuditor:
             "Decide if the claim is hallucinated using ONLY the source excerpts below.\n"
             "Each excerpt is either a top semantic match for the claim or the sentence "
             "immediately before or after such a match in the original document order.\n"
+            "Understand that the excerpts are only part of the source text, so the point is to verify the summary sentence using the provided excerpts, but not assume the excerpts should conain everything.\n"
+            "Besides hallucinations, you need to make sure if the summary line captures the points of the excerpts and provide an explanation of how good the summary line is at capturing the points of the excerpts.\n"
             'Return strict JSON only: {"hallucinated": true/false, "explanation": "short explanation"}\n\n'
             f"Source excerpts (document order):\n{judge_context}\n\n"
             f"Claim:\n{claim}\n\nDeBERTa confidence: {deberta_confidence}"
